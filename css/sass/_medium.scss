@@ -1,0 +1,25 @@
+@media screen and (max-width: 768px) {
+
+	#header #toggles { display: block; }
+	
+	#primary-nav {
+		display: none;
+		li { 
+			float: none; 
+			margin: 0 0 1px 0;
+			a {
+				display: block; 
+				line-height: 32px; 
+				padding: 0 10px; 
+				color: #fff;
+				background-color: #ccc;
+			}
+		}
+	}
+	
+	#content-area.two-col-a .primary { @include span-columns(12 omega,12); }
+	#content-area.two-col-a .secondary { @include span-columns(12 omega,12); }
+	
+}
+
+

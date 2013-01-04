@@ -1,0 +1,44 @@
+@import "compass/css3";
+@import "compass/utilities";
+@import "susy";
+
+@import "icn/*.png";
+@include all-icn-sprites(true);
+
+/*
+	GLOBAL VARIABLES
+*/
+
+$total-columns: 12;
+$column-width: 60px;
+$gutter-width: 20px;
+$grid-padding: 10px;
+
+$default-font-color: #000;
+
+/*
+	MIXINS
+*/
+
+@mixin island {
+	max-width: 1140px; 
+	margin: 0 auto 0; 
+}
+
+/*
+	HELPER CLASSES
+*/
+
+.hide { display: none; }
+
+.small-screen { display: none; }
+.medium-screen { display: none; }
+.standard-screen { display: block; }
+
+// IMAGE REPLACEMENT
+.ir { 
+	display: inline-block; 
+	overflow: hidden; 
+	text-indent: -9999px;
+}
+
