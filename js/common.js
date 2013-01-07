@@ -1,4 +1,60 @@
 /*
+	GLOBAL VARIABLES
+*/
+
+var smallScreen = false;
+
+/*
+	DOM READY
+*/
+
+$(function () {
+	
+	/*
+		ON BROWSER RESIZE
+	*/
+	
+	if ( ! ($.browser.msie && jQuery.browser.version.split('.')[0] < 9) ){
+		
+		// DETECTS CHANGES TO WINDOW SIZING
+		$(window).resize(function() {
+	
+			var windowWidth = $(window).width();
+	
+			if (windowWidth <= 768) {
+	
+				smallScreen = true;
+				
+				// @@@ DO STUFF HERE
+	
+			} else {
+				
+				smallScreen = false;
+	
+				// @@@ DO STUFF HERE
+				
+			}
+	
+		}).resize();
+		
+	}
+	
+	/*
+		INIT TOGGLE FOR PRIMARY NAVIGATION
+	*/
+	
+	var primaryNav = $('#primary-nav');
+	
+	$('#toggle-menu').click(function () {
+		
+		primaryNav.slideToggle();
+		
+		return false;
+	});
+	
+});
+
+/*
 	AVOID CONSOLE ERRORS IN IE - HTML5 BOILERPLATE
 */
 
@@ -23,20 +79,3 @@
         }
     }
 }());
-
-/*
-	DOM READY
-*/
-
-$(function () {
-	
-	var primaryNav = $('#primary-nav');
-	
-	$('#toggle-menu').click(function () {
-		
-		primaryNav.slideToggle();
-		
-		return false;
-	});
-	
-});
