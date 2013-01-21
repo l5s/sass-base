@@ -130,7 +130,7 @@
 				if (this.pageIndicators.length > 0) {
 					for (var i = 1; i <= this.pages; i++) {
 						$('<a href="#">' + i + '</a>').click(function() {
-							self.goto( parseInt(o.html()) );																						
+							self.goto( parseInt($(this).html()) );																						
 							return false;
 						}).appendTo(this.pageIndicators);
 					}
@@ -168,7 +168,7 @@
 				.after('<a class="arrow back">Back</a><a class="arrow forward">Next</a>')
 				
 				// ADD CONTAINER FOR PAGE INDICATORS
-				.before('<div class="pages"></div>');
+				.after('<div class="pages"></div>');
 			
 		},
 		

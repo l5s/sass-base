@@ -8,7 +8,8 @@
 	height: 250px;
 */
 }
-.carousel .pages { display: none; }
+.carousel .pages { position: absolute; left: 5px; bottom: 5px; }
+.carousel .pages a { text-decoration: none; letter-spacing: 0.5em; }
 .carousel .frame {
 /*
   width: 940px;

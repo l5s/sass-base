@@ -999,10 +999,18 @@ nav ul li a:hover {
 
 /* line 11, ../sass/_carousel.scss */
 .carousel .pages {
-  display: none;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
 }
 
 /* line 12, ../sass/_carousel.scss */
+.carousel .pages a {
+  text-decoration: none;
+  letter-spacing: 0.5em;
+}
+
+/* line 13, ../sass/_carousel.scss */
 .carousel .frame {
   /*
     width: 940px;
@@ -1013,7 +1021,7 @@ nav ul li a:hover {
   top: 0;
 }
 
-/* line 21, ../sass/_carousel.scss */
+/* line 22, ../sass/_carousel.scss */
 .carousel .frame ul {
   width: 9999px;
   list-style-image: none;
@@ -1025,7 +1033,7 @@ nav ul li a:hover {
   top: 0;
 }
 
-/* line 31, ../sass/_carousel.scss */
+/* line 32, ../sass/_carousel.scss */
 .carousel ul li {
   display: block;
   float: left;
@@ -1037,7 +1045,7 @@ nav ul li a:hover {
   */
 }
 
-/* line 41, ../sass/_carousel.scss */
+/* line 42, ../sass/_carousel.scss */
 .carousel .arrow {
   display: block;
   height: 45px;
@@ -1050,13 +1058,13 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-/* line 52, ../sass/_carousel.scss */
+/* line 53, ../sass/_carousel.scss */
 .carousel .forward {
   background: url(../images/ico-carousel-arrow-right.gif) no-repeat;
   right: 20px;
 }
 
-/* line 56, ../sass/_carousel.scss */
+/* line 57, ../sass/_carousel.scss */
 .carousel .back {
   background: url(../images/ico-carousel-arrow-left.gif) no-repeat;
   left: 20px;
