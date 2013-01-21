@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.carousel {
+  position: relative;
+/*
+	width: 940px;
+	height: 250px;
+*/
+}
+.carousel .pages { display: none; }
+.carousel .frame {
+/*
+  width: 940px;
+  height: 250px;
+*/
+  overflow: auto;
+  position: absolute;
+  top: 0;
+}
+.carousel .frame ul {
+  width: 9999px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+.carousel ul li {
+  display: block;
+  float: left;
+  padding: 0;
+	margin: 0;
+/*
+  width: 940px;
+  height: 250px;
+*/
+}
+.carousel .arrow {
+  display: block;
+  height: 45px;
+  width: 23px;
+  text-indent: -999px;
+	overflow: hidden;
+  position: absolute;
+  top: 50%;
+	margin-top: -22px;
+  cursor: pointer;
+}
+.carousel .forward {
+	background: url(../images/ico-carousel-arrow-right.gif) no-repeat;
+  right: 20px;
+}
+.carousel .back {
+	background: url(../images/ico-carousel-arrow-left.gif) no-repeat;
+  left: 20px;
+}
