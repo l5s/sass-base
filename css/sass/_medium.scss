@@ -20,6 +20,12 @@
 	#content-area.two-col-a .primary { @include span-columns(12 omega,12); }
 	#content-area.two-col-a .secondary { @include span-columns(12 omega,12); }
 	
+	#footer {
+		display: block;
+		color: #000;
+		background-color: #fff;
+	}
+	
 }
 
 

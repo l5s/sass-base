@@ -33,9 +33,11 @@ nav {
 	overflow: hidden; 
 	margin-bottom: 20px;
 	
-	#utility-nav {
+	.inner {
 		@include container;
-		ul { float: right; }
+		#utility-nav {
+			float: right;
+		}
 	}
 }
 
@@ -66,4 +68,13 @@ nav {
 	}
 }
 
-#footer .inner { @include container; }
+#footer {
+	display: none;
+	width: 100%;
+	line-height: 40px;
+	color: #fff;
+	background-color: #000;
+	.inner {
+		@include container;
+	}
+}

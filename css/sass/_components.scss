@@ -1,0 +1,43 @@
+
+/*
+	BUTTON
+	http://dev.opera.com/articles/view/beautiful-ui-styling-with-css3-text-shadow-box-shadow-and-border-radius/
+*/
+
+.button {
+	border: none;
+	padding: 8px 30px;
+	border-radius: 4px;
+	background: lightgreen;
+	color: #FFF;
+	font: normal 12px arial, sans-serif;
+	text-decoration: none;
+}
+
+/*
+	SLIDING DOOR BUTTON
+*/
+
+.button2 {
+	background: transparent url('images/btn-right.png') no-repeat scroll top right;
+	color: #FFF;
+	display: inline-block;
+	font: normal 12px arial, sans-serif;
+	padding-right: 3px; /* sliding doors padding */
+	text-decoration: none;
+}
+.button2 span {
+	background: transparent url('images/btn-left.png') no-repeat;
+	display: inline-block;
+	padding: 0 17px 0 20px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+/*
+	BAR
+*/
+
+.bar { width: 100%; overflow: hidden; }
+.bar .left { float: left; }
+.bar .right { float: right }

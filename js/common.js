@@ -10,11 +10,13 @@ var smallScreen = false;
 
 $(function () {
 	
+	$('.carousel').carousel({ speed : 7500, infinite : true, autoSize : true });
+	
 	/*
 		ON BROWSER RESIZE
 	*/
 	
-	if ( ! ($.browser.msie && jQuery.browser.version.split('.')[0] < 9) ){
+	if ( ! ($.browser.msie && jQuery.browser.version.split('.')[0] < 9) ) {
 		
 		// DETECTS CHANGES TO WINDOW SIZING
 		$(window).resize(function() {
@@ -24,13 +26,17 @@ $(function () {
 			if (windowWidth <= 768) {
 	
 				smallScreen = true;
+								
+				// $('#footer').stickyFooter('relinquish');
 				
 				// @@@ DO STUFF HERE
 	
 			} else {
 				
 				smallScreen = false;
-	
+				
+				// $('#footer').stickyFooter('apply');
+				
 				// @@@ DO STUFF HERE
 				
 			}
@@ -52,6 +58,14 @@ $(function () {
 		return false;
 	});
 	
+});
+
+/*
+	IMAGES LOADED
+*/
+
+$(window).bind("load", function() {
+	// $('#footer').stickyFooter();
 });
 
 /*

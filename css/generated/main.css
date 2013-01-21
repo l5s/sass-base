@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(../lib/normalize.css);
 /* line 762, icn/*.png */
 .icn-sprite, .icn-arrow-1, .icn-arrow-2, .icn-arrow-3, .icn-arrow-4, .icn-arrow-5, .icn-arrow-6, .icn-award, .icn-bag, .icn-battery-1, .icn-battery-2, .icn-bell, .icn-book, .icn-bulb, .icn-calendar, .icn-camera, .icn-clock, .icn-cloud-down, .icn-cloud-up, .icn-cloud, .icn-comment-1, .icn-comment-2, .icn-display-down, .icn-display, .icn-email-1, .icn-email-2, .icn-engine, .icn-error-1, .icn-error-2, .icn-eye, .icn-file-1, .icn-file-2, .icn-file-3, .icn-file-delete, .icn-file-down, .icn-file-plus, .icn-file-up, .icn-flag, .icn-flash, .icn-graph, .icn-grid, .icn-heart, .icn-home, .icn-info, .icn-list-1, .icn-list-2, .icn-location-1, .icn-location-2, .icn-location-minus, .icn-location-plus, .icn-locked, .icn-map, .icn-mic, .icn-minus, .icn-movie, .icn-nav, .icn-next-1, .icn-next-2, .icn-pause, .icn-picture, .icn-play, .icn-plus, .icn-prev-1, .icn-prev-2, .icn-quote-1, .icn-quote-2, .icn-ribbon, .icn-rss-1, .icn-rss-2, .icn-search, .icn-share, .icn-shield, .icn-smashing, .icn-sound-1, .icn-sound-2, .icn-sound-3, .icn-sound-4, .icn-star, .icn-stats-1, .icn-stats-2, .icn-stats-3, .icn-stats-4, .icn-stop, .icn-t-shirt, .icn-tag, .icn-tick-1, .icn-tick-2, .icn-trash, .icn-unlocked, .icn-user, .icn-zoom-minus, .icn-zoom-plus {
@@ -650,27 +651,27 @@
 /*
 	HELPER CLASSES
 */
-/* line 32, ../sass/_base.scss */
+/* line 27, ../sass/_base.scss */
 .hide {
   display: none;
 }
 
-/* line 34, ../sass/_base.scss */
+/* line 29, ../sass/_base.scss */
 .small-screen {
   display: none;
 }
 
-/* line 35, ../sass/_base.scss */
+/* line 30, ../sass/_base.scss */
 .medium-screen {
   display: none;
 }
 
-/* line 36, ../sass/_base.scss */
+/* line 31, ../sass/_base.scss */
 .standard-screen {
   display: block;
 }
 
-/* line 39, ../sass/_base.scss */
+/* line 34, ../sass/_base.scss */
 .ir {
   display: inline-block;
   overflow: hidden;
@@ -716,7 +717,7 @@ nav ul li a:hover {
   margin-bottom: 20px;
 }
 /* line 36, ../sass/_layout.scss */
-#utility-bar #utility-nav {
+#utility-bar .inner {
   *zoom: 1;
   max-width: 940px;
   _width: 940px;
@@ -726,17 +727,17 @@ nav ul li a:hover {
   margin-right: auto;
 }
 /* line 38, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-#utility-bar #utility-nav:after {
+#utility-bar .inner:after {
   content: "";
   display: table;
   clear: both;
 }
 /* line 38, ../sass/_layout.scss */
-#utility-bar #utility-nav ul {
+#utility-bar .inner #utility-nav {
   float: right;
 }
 
-/* line 42, ../sass/_layout.scss */
+/* line 44, ../sass/_layout.scss */
 #header {
   *zoom: 1;
   max-width: 940px;
@@ -754,17 +755,17 @@ nav ul li a:hover {
   display: table;
   clear: both;
 }
-/* line 46, ../sass/_layout.scss */
+/* line 48, ../sass/_layout.scss */
 #header #logo {
   font-size: 30px;
 }
-/* line 47, ../sass/_layout.scss */
+/* line 49, ../sass/_layout.scss */
 #header #toggles {
   float: right;
   display: none;
 }
 
-/* line 50, ../sass/_layout.scss */
+/* line 52, ../sass/_layout.scss */
 #primary-nav {
   *zoom: 1;
   max-width: 940px;
@@ -782,7 +783,7 @@ nav ul li a:hover {
   clear: both;
 }
 
-/* line 57, ../sass/_layout.scss */
+/* line 59, ../sass/_layout.scss */
 #feature {
   *zoom: 1;
   max-width: 940px;
@@ -799,7 +800,7 @@ nav ul li a:hover {
   clear: both;
 }
 
-/* line 59, ../sass/_layout.scss */
+/* line 61, ../sass/_layout.scss */
 #content-area.two-col-a {
   *zoom: 1;
   max-width: 940px;
@@ -815,14 +816,14 @@ nav ul li a:hover {
   display: table;
   clear: both;
 }
-/* line 61, ../sass/_layout.scss */
+/* line 63, ../sass/_layout.scss */
 #content-area.two-col-a .primary {
   width: 74.46809%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 64, ../sass/_layout.scss */
+/* line 66, ../sass/_layout.scss */
 #content-area.two-col-a .secondary {
   width: 23.40426%;
   float: right;
@@ -831,7 +832,15 @@ nav ul li a:hover {
   display: inline;
 }
 
-/* line 69, ../sass/_layout.scss */
+/* line 71, ../sass/_layout.scss */
+#footer {
+  display: none;
+  width: 100%;
+  line-height: 40px;
+  color: #fff;
+  background-color: #000;
+}
+/* line 77, ../sass/_layout.scss */
 #footer .inner {
   *zoom: 1;
   max-width: 940px;
@@ -888,6 +897,13 @@ nav ul li a:hover {
     margin-right: 0;
     #margin-left: -20px;
     display: inline;
+  }
+
+  /* line 23, ../sass/_medium.scss */
+  #footer {
+    display: block;
+    color: #000;
+    background-color: #fff;
   }
 }
 /*
@@ -970,4 +986,78 @@ nav ul li a:hover {
   h3 {
     page-break-after: avoid;
   }
+}
+/* CSS Document */
+/* line 4, ../sass/_carousel.scss */
+.carousel {
+  position: relative;
+  /*
+  	width: 940px;
+  	height: 250px;
+  */
+}
+
+/* line 11, ../sass/_carousel.scss */
+.carousel .pages {
+  display: none;
+}
+
+/* line 12, ../sass/_carousel.scss */
+.carousel .frame {
+  /*
+    width: 940px;
+    height: 250px;
+  */
+  overflow: auto;
+  position: absolute;
+  top: 0;
+}
+
+/* line 21, ../sass/_carousel.scss */
+.carousel .frame ul {
+  width: 9999px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+
+/* line 31, ../sass/_carousel.scss */
+.carousel ul li {
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 0;
+  /*
+    width: 940px;
+    height: 250px;
+  */
+}
+
+/* line 41, ../sass/_carousel.scss */
+.carousel .arrow {
+  display: block;
+  height: 45px;
+  width: 23px;
+  text-indent: -999px;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  margin-top: -22px;
+  cursor: pointer;
+}
+
+/* line 52, ../sass/_carousel.scss */
+.carousel .forward {
+  background: url(../images/ico-carousel-arrow-right.gif) no-repeat;
+  right: 20px;
+}
+
+/* line 56, ../sass/_carousel.scss */
+.carousel .back {
+  background: url(../images/ico-carousel-arrow-left.gif) no-repeat;
+  left: 20px;
 }
