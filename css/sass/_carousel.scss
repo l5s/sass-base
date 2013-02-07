@@ -10,6 +10,7 @@
 }
 .carousel .pages { position: absolute; left: 5px; bottom: 5px; }
 .carousel .pages a { text-decoration: none; letter-spacing: 0.5em; }
+.carousel .pages a.active { font-weight: bold; }
 .carousel .frame {
 /*
   width: 940px;

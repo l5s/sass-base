@@ -35,6 +35,8 @@ $(function () {
 				
 				smallScreen = false;
 				
+				$('#primary-nav').show();
+				
 				// $('#footer').stickyFooter('apply');
 				
 				// @@@ DO STUFF HERE
