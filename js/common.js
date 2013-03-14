@@ -10,7 +10,7 @@ var smallScreen = false;
 
 $(function () {
 	
-	$('.carousel').carousel({ speed : 7500, infinite : true, autoSize : true });
+	$('.carousel').carousel({ speed : 7500, infinite : true, autoWidth : true, autoHeight : true });
 	
 	/*
 		ON BROWSER RESIZE
