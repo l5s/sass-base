@@ -82,7 +82,7 @@
 			var self = this;
 
 			this.currentPage = 1;			
-			this.windowFrame = $('> div', this.element).css('overflow', 'hidden');
+			this.windowFrame = $('> .frame', this.element).css('overflow', 'hidden');
 			this.slide = this.windowFrame.find('> ul');
 			this.items = this.slide.find('> li');
 			
