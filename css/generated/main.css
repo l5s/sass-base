@@ -992,30 +992,32 @@ nav ul li a:hover {
 .carousel {
   position: relative;
   /*
-  	width: 940px;
-  	height: 250px;
+    width: 940px;
+    height: 250px;
   */
-}
-
-/* line 11, ../sass/_carousel.scss */
-.carousel .pages {
-  position: absolute;
-  left: 5px;
-  bottom: 5px;
-}
-
-/* line 12, ../sass/_carousel.scss */
-.carousel .pages a {
-  text-decoration: none;
-  letter-spacing: 0.5em;
+  padding: 0 65px;
+  background: #eee;
 }
 
 /* line 13, ../sass/_carousel.scss */
+.carousel .pages {
+  position: absolute;
+  left: 20px;
+  bottom: 5px;
+}
+
+/* line 14, ../sass/_carousel.scss */
+.carousel .pages a {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+/* line 15, ../sass/_carousel.scss */
 .carousel .pages a.active {
   font-weight: bold;
 }
 
-/* line 14, ../sass/_carousel.scss */
+/* line 16, ../sass/_carousel.scss */
 .carousel .frame {
   /*
     width: 940px;
@@ -1026,7 +1028,7 @@ nav ul li a:hover {
   top: 0;
 }
 
-/* line 23, ../sass/_carousel.scss */
+/* line 25, ../sass/_carousel.scss */
 .carousel .frame ul {
   width: 9999px;
   list-style-image: none;
@@ -1038,7 +1040,7 @@ nav ul li a:hover {
   top: 0;
 }
 
-/* line 33, ../sass/_carousel.scss */
+/* line 35, ../sass/_carousel.scss */
 .carousel ul li {
   display: block;
   float: left;
@@ -1050,7 +1052,17 @@ nav ul li a:hover {
   */
 }
 
-/* line 43, ../sass/_carousel.scss */
+/* line 45, ../sass/_carousel.scss */
+.carousel ul li .content {
+  padding: 20px 0 30px 0;
+}
+
+/* line 48, ../sass/_carousel.scss */
+.carousel ul li img {
+  display: block;
+}
+
+/* line 51, ../sass/_carousel.scss */
 .carousel .arrow {
   display: block;
   height: 45px;
@@ -1063,13 +1075,13 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-/* line 54, ../sass/_carousel.scss */
+/* line 62, ../sass/_carousel.scss */
 .carousel .forward {
   background: url(../images/ico-carousel-arrow-right.gif) no-repeat;
   right: 20px;
 }
 
-/* line 58, ../sass/_carousel.scss */
+/* line 66, ../sass/_carousel.scss */
 .carousel .back {
   background: url(../images/ico-carousel-arrow-left.gif) no-repeat;
   left: 20px;

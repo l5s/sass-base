@@ -10,43 +10,39 @@ var smallScreen = false;
 
 $(function () {
 	
-	$('.carousel').carousel({ speed : 7500, infinite : true, autoWidth : true, autoHeight : true });
+	$('.carousel').carousel({ speed : 7500, infinite : true, autoSize : true });
 	
 	/*
 		ON BROWSER RESIZE
 	*/
-	
-	if ( ! ($.browser.msie && jQuery.browser.version.split('.')[0] < 9) ) {
-		
-		// DETECTS CHANGES TO WINDOW SIZING
-		$(window).resize(function() {
-	
-			var windowWidth = $(window).width();
-	
-			if (windowWidth <= 768) {
-	
-				smallScreen = true;
-								
-				// $('#footer').stickyFooter('relinquish');
-				
-				// @@@ DO STUFF HERE
-	
-			} else {
-				
-				smallScreen = false;
-				
-				$('#primary-nav').show();
-				
-				// $('#footer').stickyFooter('apply');
-				
-				// @@@ DO STUFF HERE
-				
-			}
-	
-		}).resize();
-		
-	}
-	
+			
+	// DETECTS CHANGES TO WINDOW SIZING
+	$(window).resize(function() {
+
+		var windowWidth = $(window).width();
+
+		if (windowWidth <= 768) {
+
+			smallScreen = true;
+							
+			// $('#footer').stickyFooter('relinquish');
+			
+			// @@@ DO STUFF HERE
+
+		} else {
+			
+			smallScreen = false;
+			
+			$('#primary-nav').show();
+			
+			// $('#footer').stickyFooter('apply');
+			
+			// @@@ DO STUFF HERE
+			
+		}
+
+	}).resize();
+			
 	/*
 		INIT TOGGLE FOR PRIMARY NAVIGATION
 	*/

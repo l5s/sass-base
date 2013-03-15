@@ -9,17 +9,15 @@
 		});		
 	</script>
 
-	<div id="feature">
-		<div class="carousel">
-			<div class="frame">
-				<ul>
-					<li><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
-					<li><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
-					<li><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
-				</ul>
-			</div> <!-- /.frame -->
-		</div> <!-- /carousel -->
-	</div> <!-- /feature -->
+	<div class="carousel">
+		<div class="frame">
+			<ul>
+				<li data-label="First"><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
+				<li data-label="Second"><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
+				<li data-label="Third"><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
+			</ul>
+		</div> <!-- /.frame -->
+	</div> <!-- /carousel -->
 	
 */
 
@@ -36,12 +34,10 @@
 			
 			speed : 7500,
 			infinite : true,
-			insertNavigation : true,
+			insertNav : true,
 			
 			// RESPONSIVE OPTIONS
-			autoWidth : false,	// SIZES TO ITS PARENT CONTAINER
-			autoHeight : false,	// SIZES TO HEIGHT SELECTOR
-			heightSelector : '> img',
+			autoSize : true,
 			
 			// CALLBACKS
 			init : function () {},
@@ -55,7 +51,7 @@
 		resetPosition : function () {
 			
 			// SET ITEM WITH
-			this.itemWidth = this.items.filter(':first').outerWidth();
+			this.width = this.items.filter(':first').outerWidth();
 			
 			// RESET POSITION
 			this.windowFrame.scrollLeft(this.itemWidth * this.visible * this.currentPage);
@@ -64,29 +60,21 @@
 		
 		autoSize : function () {
 			
-			if ( this.options.autoWidth ) {
-				
-				// GET WIDTH OF PARENT
-				var w = this.element.parent().width();
-	
-				this.element.width(w);
-				this.windowFrame.width(w);
-				this.items.width(w);
-				this.itemWidth = w;
-
-			}
+			// SET THE WIDTH OF THE INNER ITEMS
 			
-			if ( this.options.autoHeight ) {
+			var w = this.element.width();
 
-				// GET HEIGHT OF IMAGE
-				var h = this.items.filter(':first').find('> img').height();
-						
-				this.element.height(h);
-				this.windowFrame.height(h);
-				this.items.height(h);
-				
-			}
+			this.windowFrame.width(w);
+			this.items.width(w);
+			this.itemWidth = w;
+
+			// SET THE HEIGHT BASED ON THE INNER ITEMS
 			
+			var h = this.items.filter(':first').outerHeight();
+			
+			this.element.height(h);
+			this.windowFrame.height(h);
+							
 		},
 		
 		_create: function() {
@@ -98,7 +86,7 @@
 			this.slide = this.windowFrame.find('> ul');
 			this.items = this.slide.find('> li');
 			
-			if ( this.options.autoWidth || this.options.autoHeight ) {
+			if ( this.options.autoSize ) {
 				
 				this.autoSize();
 				
@@ -109,7 +97,7 @@
 					
 					self.autoSize();
 					
-					// RESET POSITION
+					// RE-ALIGN THE LEFT SIDE OF THE CURRENT ITEM
 					if (self.options.infinite) {
 						self.windowFrame.scrollLeft(self.itemWidth * self.visible * self.currentPage);
 					} else {
@@ -122,7 +110,7 @@
 				});
 				
 			} else {
-				this.itemWidth = this.items.filter(':first').outerWidth();
+				this.itemWidth = this.items.filter(':first').width();
 			}
 				
 			this.visible = Math.ceil(this.windowFrame.innerWidth() / this.itemWidth);
@@ -152,19 +140,38 @@
 				}
 				
 				// ADD NAV ELEMENTS
-				if (this.options.insertNavigation)
-					this.insertNavigation();
+				if ( this.options.insertNav ) {
+					this.windowFrame
+		
+						// INSERT ARROWS
+						.after('<a class="arrow back">Back</a><a class="arrow forward">Next</a>')
+						
+						// ADD CONTAINER FOR PAGE INDICATORS
+						.after('<div class="pages"></div>');
+				}
 				
 				// HOOK UP PAGE INDICATORS
 				this.pageIndicators = $('.pages', this.element);
+				
 				if (this.pageIndicators.length > 0) {
+					
 					for (var i = 1; i <= this.pages; i++) {
-						$('<a href="#">' + i + '</a>').click(function() {
-							self.goto( parseInt($(this).html()) );																						
+						
+						var label = this.items.eq(i - 1).attr('data-label') || i;
+						
+						$('<a href="#" class="page-' + i + '" data-page="' + i + '"><span>' + label + '</span></a>').click(function() {
+							
+							var $target = $(this);
+							
+							self.goto( $target.attr('data-page') );
+																													
 							return false;
 						}).appendTo(this.pageIndicators);
+						
 					}
+					
 					$('a:first', this.pageIndicators).addClass('active');
+					
 				}
 							
 				// 5. Bind to the forward and back buttons
@@ -191,18 +198,6 @@
 				})
 			};
 	
-		},
-		
-		insertNavigation : function ( ) {
-			
-			this.windowFrame
-
-				// INSERT ARROWS
-				.after('<a class="arrow back">Back</a><a class="arrow forward">Next</a>')
-				
-				// ADD CONTAINER FOR PAGE INDICATORS
-				.after('<div class="pages"></div>');
-			
 		},
 		
 		start : function ( ) {

@@ -4,12 +4,14 @@
 .carousel {
   position: relative;
 /*
-	width: 940px;
-	height: 250px;
+  width: 940px;
+  height: 250px;
 */
+	padding: 0 65px;
+	background: #eee;
 }
-.carousel .pages { position: absolute; left: 5px; bottom: 5px; }
-.carousel .pages a { text-decoration: none; letter-spacing: 0.5em; }
+.carousel .pages { position: absolute; left: 20px; bottom: 5px; }
+.carousel .pages a { text-decoration: none; margin-right: 10px; }
 .carousel .pages a.active { font-weight: bold; }
 .carousel .frame {
 /*
@@ -39,6 +41,12 @@
   width: 940px;
   height: 250px;
 */
+}
+.carousel ul li .content {
+	padding: 20px 0 30px 0;
+}
+.carousel ul li img {
+  display: block;
 }
 .carousel .arrow {
   display: block;
