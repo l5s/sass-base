@@ -5,7 +5,7 @@
 	
 	<script>
 		$(function () {
-			$('.carousel').carousel({ autoSize : true });
+			$('.carousel').carousel();
 		});		
 	</script>
 
@@ -45,16 +45,6 @@
 			afterResize : function () {},
 			beforeSlide : function () {},
 			afterSlide : function () {}
-			
-		},
-		
-		resetPosition : function () {
-			
-			// SET ITEM WITH
-			this.width = this.items.filter(':first').outerWidth();
-			
-			// RESET POSITION
-			this.windowFrame.scrollLeft(this.itemWidth * this.visible * this.currentPage);
 			
 		},
 		
