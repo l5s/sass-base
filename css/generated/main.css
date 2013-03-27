@@ -991,78 +991,24 @@ nav ul li a:hover {
 /* line 4, ../sass/_carousel.scss */
 .carousel {
   position: relative;
-  /*
-    width: 940px;
-    height: 250px;
-  */
-  padding: 0 65px;
   background: #eee;
 }
-
-/* line 13, ../sass/_carousel.scss */
-.carousel .pages {
+/* line 7, ../sass/_carousel.scss */
+.carousel .carousel-indicators {
   position: absolute;
   left: 20px;
   bottom: 5px;
 }
-
-/* line 14, ../sass/_carousel.scss */
-.carousel .pages a {
+/* line 11, ../sass/_carousel.scss */
+.carousel .carousel-indicators a {
   text-decoration: none;
   margin-right: 10px;
 }
-
 /* line 15, ../sass/_carousel.scss */
-.carousel .pages a.active {
+.carousel .carousel-indicators a.active {
   font-weight: bold;
 }
-
-/* line 16, ../sass/_carousel.scss */
-.carousel .frame {
-  /*
-    width: 940px;
-    height: 250px;
-  */
-  overflow: auto;
-  position: absolute;
-  top: 0;
-}
-
-/* line 25, ../sass/_carousel.scss */
-.carousel .frame ul {
-  width: 9999px;
-  list-style-image: none;
-  list-style-position: outside;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-}
-
-/* line 35, ../sass/_carousel.scss */
-.carousel ul li {
-  display: block;
-  float: left;
-  padding: 0;
-  margin: 0;
-  /*
-    width: 940px;
-    height: 250px;
-  */
-}
-
-/* line 45, ../sass/_carousel.scss */
-.carousel ul li .content {
-  padding: 20px 0 30px 0;
-}
-
-/* line 48, ../sass/_carousel.scss */
-.carousel ul li img {
-  display: block;
-}
-
-/* line 51, ../sass/_carousel.scss */
+/* line 17, ../sass/_carousel.scss */
 .carousel .arrow {
   display: block;
   height: 45px;
@@ -1074,15 +1020,42 @@ nav ul li a:hover {
   margin-top: -22px;
   cursor: pointer;
 }
-
-/* line 62, ../sass/_carousel.scss */
+/* line 28, ../sass/_carousel.scss */
 .carousel .forward {
   background: url(../images/ico-carousel-arrow-right.gif) no-repeat;
   right: 20px;
 }
-
-/* line 66, ../sass/_carousel.scss */
+/* line 32, ../sass/_carousel.scss */
 .carousel .back {
   background: url(../images/ico-carousel-arrow-left.gif) no-repeat;
   left: 20px;
+}
+/* line 36, ../sass/_carousel.scss */
+.carousel .frame {
+  overflow: auto;
+  position: absolute;
+  top: 0;
+}
+/* line 40, ../sass/_carousel.scss */
+.carousel .frame ul {
+  width: 9999px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+/* line 49, ../sass/_carousel.scss */
+.carousel .frame ul li {
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+/* line 54, ../sass/_carousel.scss */
+.carousel .frame ul li img {
+  display: block;
+  width: 100%;
 }
