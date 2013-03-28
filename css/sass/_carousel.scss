@@ -32,7 +32,7 @@
 	.back {
 		background: url(../images/ico-carousel-arrow-left.gif) no-repeat;
 		left: 20px;
-	}	
+	}
 	.frame {
 		overflow: auto;
 		position: absolute;
@@ -63,7 +63,7 @@
 .multi-carousel {
   position: relative;
 	background: #eee;
-	padding: 20px 20px 30px 20px;
+	padding: 30px 20px;
 	.carousel-indicators {
 		position: absolute; 
 		left: 75px; 
@@ -84,11 +84,18 @@
 	}	
 	.back {
 		left: 20px;
+	}
+	.msg {
+		position: absolute;
+		top: 10px;
+		left: 20px;
+		margin: 0;
+		font-size: 12px;
 	}	
 	.frame {
 		overflow: auto;
 		position: absolute;
-		top: 20px;
+		top: 30px;
 		ul {
 			width: 9999px;
 			list-style-image: none;

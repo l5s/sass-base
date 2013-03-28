@@ -32,22 +32,7 @@
           <h5 class="hide">Primary content:</h5>
           <h1>Welcome</h1>
           
-          <div id="multi-carousel" class="multi-carousel">
-            <div class="frame">
-              <ul>
-                <li><img src="http://placehold.it/100x100&text=1" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=2" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=3" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=4" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=5" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=6" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=7" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=8" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=9" width="100" height="100" /></li>
-                <li><img src="http://placehold.it/100x100&text=10" width="100" height="100" /></li>
-              </ul>
-            </div> <!-- /.frame -->
-          </div> <!-- /carousel -->
+          <button data-overlay="#my-overlay" class="overlay-trigger">Open Overlay</button>
                     
         </div> <!-- /primary -->
         
@@ -67,6 +52,33 @@
 	<!--#include file="include/footer.html" -->
 
 	<!--#include file="include/scripts.html" -->
+  
+  <div id="my-overlay" class="overlay" style="display: none;">
+  	<header>
+      <h1>[Title]</h1>
+    </header>
+    <div class="body">
+      <p>Lorem ipsum dolor</p>
+      
+      <div id="multi-carousel" class="multi-carousel">
+      	<p class="msg">Displaying <span id="nth-item">0</span> of <span id="total-items"></span></p>
+        <div class="frame">
+          <ul>
+            <li><img src="http://placehold.it/100x100&text=1" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=2" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=3" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=4" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=5" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=6" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=7" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=8" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=9" width="100" height="100" /></li>
+            <li><img src="http://placehold.it/100x100&text=10" width="100" height="100" /></li>
+          </ul>
+        </div> <!-- /.frame -->
+      </div> <!-- /carousel -->
+		</div> <!-- /body -->
+   </div> <!-- /overlay -->  
   
 </body>
 </html>

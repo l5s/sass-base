@@ -11,10 +11,22 @@ var smallScreen = false;
 $(function () {
 	
 	$('.carousel').carousel({ speed : 7500, infinite : true, autoSize : true });
-
-	$('.multi-carousel').carousel({
-		speed : 0,
-		autoItemWidth : false
+	
+	var totalItems = $('#total-items'),
+			nthItem = $('#nth-item');
+			
+	$('.overlay-trigger').overlay({ visible : function () {
+			$('.multi-carousel').carousel({
+				speed : 0,
+				autoItemWidth : false,
+				init : function (carousel) {
+					totalItems.html(carousel.pages);
+				},
+				afterSlide : function (n) { alert(n);
+					nthItem.html(n);
+				}
+			});
+		}
 	});
 	
 	/*
@@ -46,7 +58,7 @@ $(function () {
 			
 		}
 
-	}).resize();
+	});
 			
 	/*
 		INIT TOGGLE FOR PRIMARY NAVIGATION
