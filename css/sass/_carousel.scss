@@ -59,3 +59,57 @@
 		}		
 	}	
 }
+
+.multi-carousel {
+  position: relative;
+	background: #eee;
+	padding: 20px 20px 30px 20px;
+	.carousel-indicators {
+		position: absolute; 
+		left: 75px; 
+		bottom: 5px;
+		a {
+			text-decoration: none; 
+			margin-right: 10px; 
+		}
+		a.active { font-weight: bold; }
+	}
+	.arrow {
+		position: absolute;
+		bottom: 5px;
+		cursor: pointer;
+	}
+	.forward {
+		right: 20px;
+	}	
+	.back {
+		left: 20px;
+	}	
+	.frame {
+		overflow: auto;
+		position: absolute;
+		top: 20px;
+		ul {
+			width: 9999px;
+			list-style-image: none;
+			list-style-position: outside;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			li {
+				display: block;
+				float: left;
+				padding: 0;
+				margin: 0 20px 0 0;
+				width: 100px;
+				height: 100px;
+				background: #DDD;
+				img { 
+					display: block; 
+				}
+			}			
+		}		
+	}	
+}

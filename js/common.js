@@ -11,6 +11,11 @@ var smallScreen = false;
 $(function () {
 	
 	$('.carousel').carousel({ speed : 7500, infinite : true, autoSize : true });
+
+	$('.multi-carousel').carousel({
+		speed : 0,
+		autoItemWidth : false
+	});
 	
 	/*
 		ON BROWSER RESIZE

@@ -19,6 +19,31 @@
 		</div> <!-- /.frame -->
 	</div> <!-- /carousel -->
 	
+	EXAMPLE:
+	
+	<script>
+		$(function () {
+			$('.carousel').carousel({ insertNav : false });
+		});		
+	</script>
+
+	<div class="carousel">
+		<div class="frame">
+			<ul>
+				<li data-label="First"><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
+				<li data-label="Second"><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
+				<li data-label="Third"><img src="http://placehold.it/940x250&text=Feature" width="100%" /></li>
+			</ul>
+		</div> <!-- /.frame -->
+		<a class="arrow back"><span>Back</span></a>
+		<a class="arrow forward"><span>Next</span></a>
+		<div class="carousel-indicators">
+			<a href="#" class="carousel-slide-1" data-slide="1"><span>1</span></a>
+			<a href="#" class="carousel-slide-2" data-slide="2"><span>2</span></a>
+			<a href="#" class="carousel-slide-3" data-slide="3"><span>3</span></a>
+		</div> <!-- /carousel-indicators -->
+	</div> <!-- /carousel -->
+	
 */
 
 (function( $ ) {
@@ -38,6 +63,7 @@
 			
 			// RESPONSIVE OPTIONS
 			autoSize : true,
+			autoItemWidth : true,
 			
 			// CALLBACKS
 			init : function () {},
@@ -52,18 +78,21 @@
 			
 			// SET THE WIDTH OF THE INNER ITEMS
 			
-			var w = this.element.width();
+			var width = this.element.width(); // CAROUSEL WIDTH; EXCLUDES ANY PADDING
 
-			this.windowFrame.width(w);
-			this.items.width(w);
-			this.itemWidth = w;
+			this.windowFrame.width(width);
+			
+			if ( this.options.autoItemWidth ) {
+				this.items.width(width - ( this.items.innerWidth() - this.items.width() ) ); // SET ITEM WIDTH MINUS ANY PADDING
+				this.itemWidth = width;
+			}
 
 			// SET THE HEIGHT BASED ON THE INNER ITEMS
 			
-			var h = this.items.filter(':first').outerHeight();
+			var height = this.items.filter(':first').outerHeight();
 			
-			this.element.height(h);
-			this.windowFrame.height(h);
+			this.element.height(height);
+			this.windowFrame.height(height);
 							
 		},
 		
@@ -75,6 +104,7 @@
 			this.windowFrame = $('> .frame', this.element).css('overflow', 'hidden');
 			this.slide = this.windowFrame.find('> ul');
 			this.items = this.slide.find('> li');
+			this.itemWidth = this.items.filter(':first').outerWidth(true); // DEFAULT VALUE
 			
 			if ( this.options.autoSize ) {
 				
@@ -86,6 +116,17 @@
 					self.options.beforeResize(self);
 					
 					self.autoSize();
+					
+					// REDO PADDING AND INDICATORS
+					if ( ! self.options.autoItemWidth ) {
+						self.items.remove('.cloned, .empty');
+						self.items = self.slide.find('> li');
+						self.visible = Math.ceil(self.windowFrame.innerWidth() / self.itemWidth);
+						self.pages = Math.ceil(self.items.length / self.visible);
+						self._addPadding();
+						self.indicators.children().remove();
+						self._setupIndicators();
+					}
 					
 					// RE-ALIGN THE LEFT SIDE OF THE CURRENT ITEM
 					if (self.options.infinite) {
@@ -99,78 +140,42 @@
 					
 				});
 				
-			} else {
-				this.itemWidth = this.items.filter(':first').width();
 			}
 				
 			this.visible = Math.ceil(this.windowFrame.innerWidth() / this.itemWidth);
 			this.pages = Math.ceil(this.items.length / this.visible);
 			
 			this.autoAdvanceTimer = null;
-			this.pageIndicators = null;
+			this.indicators = null;
 			
 			// IF MORE THAN ONE PAGE
 			if (this.pages > 1) {
 				
-				if (this.options.infinite) {
-					
-					// 1. Pad so that 'visible' number will always be seen, otherwise create empty items
-					if ((this.items.length % this.visible) != 0) {
-						this.slide.append(repeat('<li class="empty" />', this.visible - (this.items.length % this.visible)));
-						this.items = this.slide.find('> li');
-					}
-					
-					// 2. Top and tail the list with 'visible' number of items, top has the last section, and tail has the first
-					this.items.filter(':first').before(this.items.slice(- this.visible).clone().addClass('cloned'));
-					this.items.filter(':last').after(this.items.slice(0, this.visible).clone().addClass('cloned'));
-					this.items = this.slide.find('> li'); // reselect
-					
-					// 3. Set the left position to the first 'real' item
-					this.windowFrame.scrollLeft(this.itemWidth * this.visible);
-				}
+				this._addPadding();
 				
 				// ADD NAV ELEMENTS
 				if ( this.options.insertNav ) {
 					this.windowFrame
 		
 						// INSERT ARROWS
-						.after('<a class="arrow back">Back</a><a class="arrow forward">Next</a>')
+						.after('<a class="arrow back"><span>Back</span></a><a class="arrow forward"><span>Next</span></a>')
 						
 						// ADD CONTAINER FOR PAGE INDICATORS
-						.after('<div class="pages"></div>');
+						.after('<div class="carousel-indicators"></div>');
 				}
+				
+				this.indicators = $('.carousel-indicators', this.element);
 				
 				// HOOK UP PAGE INDICATORS
-				this.pageIndicators = $('.pages', this.element);
-				
-				if (this.pageIndicators.length > 0) {
-					
-					for (var i = 1; i <= this.pages; i++) {
-						
-						var label = this.items.eq(i - 1).attr('data-label') || i;
-						
-						$('<a href="#" class="page-' + i + '" data-page="' + i + '"><span>' + label + '</span></a>').click(function() {
-							
-							var $target = $(this);
-							
-							self.goto( $target.attr('data-page') );
-																													
-							return false;
-						}).appendTo(this.pageIndicators);
-						
-					}
-					
-					$('a:first', this.pageIndicators).addClass('active');
-					
-				}
-							
+				this._setupIndicators();
+											
 				// 5. Bind to the forward and back buttons
-				$('a.back', this.element).click(function () {
+				$('.back', this.element).click(function () {
 					self.prev();												
 					return false;																						
 				});
 				
-				$('a.forward', this.element).click(function () {
+				$('.forward', this.element).click(function () {
 					self.next();												
 					return false;
 				});
@@ -188,6 +193,62 @@
 				})
 			};
 	
+		},
+		
+		_setupIndicators : function () {
+			var self = this;
+			
+			if (this.indicators.length > 0) {
+				
+				for (var i = 1; i <= this.pages; i++) {
+					
+					var label = i;
+					if ( this.options.autoItemWidth ) {
+						label = this.items.filter(':not(.cloned)').eq(i - 1).attr('data-label') || i;
+					}
+					
+					// GET THE INDICATOR IF IT ALREADY EXISTS
+					var indicator = $('.carousel-slide-' + i, this.element);
+					
+					// IF IT DOESN'T EXIST CREATE A NEW ONE
+					if ( indicator.length == 0 ) {
+						indicator = $('<a href="#" class="carousel-slide-' + i + '" data-slide="' + i + '"><span>' + label + '</span></a>').appendTo(this.indicators);
+					}
+					
+					indicator.click(function() {
+						
+						var $target = $(this);
+						
+						self.goto( $target.attr('data-slide') );
+																												
+						return false;
+					});
+					
+				}
+				
+				$('a:first', this.indicators).addClass('active');
+				
+			}
+			
+		},
+		
+		_addPadding : function () {
+			if (this.options.infinite) {
+				
+				// 1. Pad so that 'visible' number will always be seen, otherwise create empty items
+				if ((this.items.length % this.visible) != 0) {
+					this.slide.append( repeat('<li class="empty" />', this.visible - (this.items.length % this.visible) ) );
+					this.items = this.slide.find('> li');
+				}
+				
+				// 2. Top and tail the list with 'visible' number of items, top has the last section, and tail has the first
+				this.items.filter(':first').before(this.items.slice(- this.visible).clone().addClass('cloned'));
+				this.items.filter(':last').after(this.items.slice(0, this.visible).clone().addClass('cloned'));
+				this.items = this.slide.find('> li'); // reselect
+				
+				// 3. Set the left position to the first 'real' item
+				this.windowFrame.scrollLeft(this.itemWidth * this.visible);
+			}
 		},
 		
 		start : function ( ) {
@@ -208,9 +269,17 @@
 		},
 		
 		goto : function ( page ) {
-			this.stop();
+			
+			if ( this.autoAdvanceTimer ) {
+				this.stop();
+			}
+			
 			this._goto(page);
-			this.start();
+			
+			if (this.options.speed > 0 && this.pages > 1) {
+				this.start();
+			}
+			
 		},
 
 		_goto : function ( page ) {
@@ -245,8 +314,8 @@
 					}, 500, function () {
 						
 						// UPDATE PAGE INDICATORS
-						$('a:nth-child(' + self.currentPage + ')', self.pageIndicators).removeClass('active');
-						$('a:nth-child(' + page + ')', self.pageIndicators).addClass('active');
+						$('a:nth-child(' + self.currentPage + ')', self.indicators).removeClass('active');
+						$('a:nth-child(' + page + ')', self.indicators).addClass('active');
 						self.currentPage = page;
 						
 						// CALLBACK FUNCTION
@@ -291,8 +360,8 @@
 						page = newPage;
 						
 						// UPDATE PAGE INDICATORS
-						$('a:nth-child(' + self.currentPage + ')', self.pageIndicators).removeClass('active');
-						$('a:nth-child(' + page + ')', self.pageIndicators).addClass('active');
+						$(':nth-child(' + self.currentPage + ')', self.indicators).removeClass('active');
+						$(':nth-child(' + page + ')', self.indicators).addClass('active');
 						self.currentPage = page;
 						
 						// CALLBACK FUNCTION

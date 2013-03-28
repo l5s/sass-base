@@ -1059,3 +1059,70 @@ nav ul li a:hover {
   display: block;
   width: 100%;
 }
+
+/* line 63, ../sass/_carousel.scss */
+.multi-carousel {
+  position: relative;
+  background: #eee;
+  padding: 20px 20px 30px 20px;
+}
+/* line 67, ../sass/_carousel.scss */
+.multi-carousel .carousel-indicators {
+  position: absolute;
+  left: 75px;
+  bottom: 5px;
+}
+/* line 71, ../sass/_carousel.scss */
+.multi-carousel .carousel-indicators a {
+  text-decoration: none;
+  margin-right: 10px;
+}
+/* line 75, ../sass/_carousel.scss */
+.multi-carousel .carousel-indicators a.active {
+  font-weight: bold;
+}
+/* line 77, ../sass/_carousel.scss */
+.multi-carousel .arrow {
+  position: absolute;
+  bottom: 5px;
+  cursor: pointer;
+}
+/* line 82, ../sass/_carousel.scss */
+.multi-carousel .forward {
+  right: 20px;
+}
+/* line 85, ../sass/_carousel.scss */
+.multi-carousel .back {
+  left: 20px;
+}
+/* line 88, ../sass/_carousel.scss */
+.multi-carousel .frame {
+  overflow: auto;
+  position: absolute;
+  top: 20px;
+}
+/* line 92, ../sass/_carousel.scss */
+.multi-carousel .frame ul {
+  width: 9999px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+/* line 101, ../sass/_carousel.scss */
+.multi-carousel .frame ul li {
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 0 20px 0 0;
+  width: 100px;
+  height: 100px;
+  background: #DDD;
+}
+/* line 109, ../sass/_carousel.scss */
+.multi-carousel .frame ul li img {
+  display: block;
+}
