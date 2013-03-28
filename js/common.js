@@ -22,7 +22,7 @@ $(function () {
 				init : function (carousel) {
 					totalItems.html(carousel.pages);
 				},
-				afterSlide : function (n) { alert(n);
+				afterSlide : function (n) {
 					nthItem.html(n);
 				}
 			});
