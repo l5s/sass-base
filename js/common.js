@@ -19,11 +19,20 @@ $(function () {
 			$('.multi-carousel').carousel({
 				speed : 0,
 				autoItemWidth : false,
-				init : function (carousel) {
-					totalItems.html(carousel.pages);
+				init : function ( carousel ) {
+					
+					var total = carousel.items.filter(':not(.cloned, .empty)').length;
+					
+					totalItems.html( total );
+					nthItem.html( (carousel.currentPage * carousel.visible - carousel.visible + 1) + '-' + ((carousel.currentPage * carousel.visible) > total ? total : carousel.currentPage * carousel.visible) );
+					
 				},
-				afterSlide : function (n) {
-					nthItem.html(n);
+				afterSlide : function (carousel) {
+					
+					var total = carousel.items.filter(':not(.cloned, .empty)').length;
+					
+					nthItem.html( (carousel.currentPage * carousel.visible - carousel.visible + 1) + '-' + ((carousel.currentPage * carousel.visible) > total ? total : carousel.currentPage * carousel.visible) );
+					
 				}
 			});
 		}
