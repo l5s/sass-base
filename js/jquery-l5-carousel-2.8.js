@@ -113,7 +113,7 @@
 				$(window).resize(function () {
 					
 					// CALLBACK
-					self.options.beforeResize(self);
+					self.options.beforeResize( self );
 					
 					self.autoSize();
 					
@@ -182,7 +182,7 @@
 			}
 			
 			// CALLBACK
-			this.options.init(self);
+			this.options.init( self );
 		
 			// START CAROUSEL
 			if (this.options.speed > 0 && this.pages > 1) {
@@ -305,7 +305,7 @@
 				page = this.pages;
 			}
 			
-			if ( self.options.beforeSlide(page) == false )
+			if ( self.options.beforeSlide( self ) == false )
 				return false;
 
 			// ANIMATE CAROUSEL			
@@ -319,7 +319,7 @@
 						self.currentPage = page;
 						
 						// CALLBACK FUNCTION
-						self.options.afterSlide(this.currentPage);
+						self.options.afterSlide( self );
 			});                
 		},		
 		
@@ -338,7 +338,7 @@
 				newPage = 1;
 			} 
 					
-			if ( self.options.beforeSlide(newPage) == false )
+			if ( self.options.beforeSlide( self ) == false )
 				return false;
 			
 			// ANIMATE CAROUSEL
@@ -365,7 +365,7 @@
 						self.currentPage = page;
 						
 						// CALLBACK FUNCTION
-						self.options.afterSlide( self.currentPage );
+						self.options.afterSlide( self );
 			
 			});                
 	
