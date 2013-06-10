@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <title>@@@ | Home</title>
 	<!--#include file="include/head-tags.html" -->
+	<!--#include file="include/scripts.html" -->
 </head>
 
 <body id="index" class="home">
@@ -12,47 +13,60 @@
   
 		<!--#include file="include/header.html" -->
     
-    <div id="body-area">
+		<div id="body-area">
+		
+			<div id="feature">
+			
+			  <div id="carousel" class="carousel">
+				 <div class="frame">
+					<ul>
+					  <li><div class="content"><img src="http://placehold.it/940x250&text=1" /></div></li>
+					  <li><div class="content"><img src="http://placehold.it/940x250&text=2" /></div></li>
+					  <li><div class="content"><img src="http://placehold.it/940x250&text=3" /></div></li>
+					</ul>
+				 </div> <!-- /.frame -->
+			  </div> <!-- /carousel -->
+			  
+			</div> <!-- /feature -->
+			
+			<div id="content-area" class="two-col-a">
+			
+			  <div class="primary">
+				 <h5 class="hide">Primary content:</h5>
+				 <div class="container">
+				 	<header class="toggle-small-screen"><h1>Welcome</h1></header>
+					<div class="body">
+						<div class="content">
+							<p>Uptiur, cor atem ratio tet, ommolo mos pos vendaec uptationese plignit, sincia vides dis dianissit audis nieni nisi ut et acculpa nonsequ amend. Ebit enia sam nullupt aturit, quae. Tia net ipsape ommo ventur sitatium.</p>
+							<button class="button" data-overlay="#my-overlay" class="overlay-trigger">Open Overlay</button>
+						</div> <!-- /content -->
+					</div> <!-- /body -->
+				 </div> <!-- /container -->				 
+				 							  
+			  </div> <!-- /primary -->
+			  
+			  <aside class="secondary">
+				 <h5 class="hide">Secondary content:</h5>
+				 
+				 <div class="container">
+				 	<header class="toggle-small-screen"><h6>Title</h6></header>
+					<div class="body">
+						<div class="content">
+							<p>[Secondary content]</p>
+						</div> <!-- /content -->
+					</div> <!-- /body -->
+				 </div> <!-- /container -->
+				 
+			  </aside> <!-- /secondary -->
+			  
+			</div> <!-- /content-area -->
+		
+		</div> <!-- /body-area -->
     
-    	<div id="feature">
-        <div id="carousel" class="carousel">
-          <div class="frame">
-            <ul>
-              <li data-label="First"><div class="content"><img src="http://placehold.it/940x250&text=1" /></div></li>
-              <li data-label="Second"><div class="content"><img src="http://placehold.it/940x250&text=2" /></div></li>
-              <li data-label="Third"><div class="content"><img src="http://placehold.it/940x250&text=3" /></div></li>
-            </ul>
-          </div> <!-- /.frame -->
-        </div> <!-- /carousel -->
-      </div> <!-- /feature -->
-      
-      <div id="content-area" class="two-col-a">
-      
-        <div class="primary">
-          <h5 class="hide">Primary content:</h5>
-          <h1>Welcome</h1>
-          
-          <button data-overlay="#my-overlay" class="overlay-trigger">Open Overlay</button>
-                    
-        </div> <!-- /primary -->
-        
-        <aside class="secondary">
-          <h5 class="hide">Secondary content:</h5>
-          <article>
-            <p>[Secondary content]</p>
-          </article>
-        </aside> <!-- /secondary -->
-        
-      </div> <!-- /content-area -->
-      
-    </div> <!-- /body-area -->
-    
+		<!--#include file="include/footer.html" -->
+		
   </div> <!-- /page -->
-  
-	<!--#include file="include/footer.html" -->
-
-	<!--#include file="include/scripts.html" -->
-  
+    
   <div id="my-overlay" class="overlay" style="display: none;">
   	<header>
       <h1>[Title]</h1>

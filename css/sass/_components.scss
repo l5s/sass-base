@@ -1,43 +1,46 @@
 
 /*
 	BUTTON
-	http://dev.opera.com/articles/view/beautiful-ui-styling-with-css3-text-shadow-box-shadow-and-border-radius/
 */
 
 .button {
 	border: none;
-	padding: 8px 30px;
-	border-radius: 4px;
-	background: lightgreen;
-	color: #FFF;
-	font: normal 12px arial, sans-serif;
+	padding: 0 10px;
+	background: $lgt-blue;
+	color: $blue;
+	font: normal 12px/32px arial, sans-serif;
 	text-decoration: none;
+	display: inline-block;
 }
 
 /*
-	SLIDING DOOR BUTTON
+	SIMPLE TABS
 */
 
-.button2 {
-	background: transparent url('images/btn-right.png') no-repeat scroll top right;
-	color: #FFF;
-	display: inline-block;
-	font: normal 12px arial, sans-serif;
-	padding-right: 3px; /* sliding doors padding */
-	text-decoration: none;
+ul.tabs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow: hidden;
+	li {
+		margin: 0 10px 0 0;
+		float: left;
+		a {
+			display: block;
+			padding: 5px 15px;
+			background-color: $lgt-blue;
+			cursor: pointer;
+			text-align: center;
+			font-size: 12px;
+			font-style: normal;
+			outline: none;
+			text-decoration: none;
+		}
+		&.selected a {
+			font-weight: bold;
+			color: $gray;
+			background-color: $lgt-gray;
+		}
+	}
 }
-.button2 span {
-	background: transparent url('images/btn-left.png') no-repeat;
-	display: inline-block;
-	padding: 0 17px 0 20px;
-	line-height: 30px;
-	vertical-align: middle;
-}
-
-/*
-	BAR
-*/
-
-.bar { width: 100%; overflow: hidden; }
-.bar .left { float: left; }
-.bar .right { float: right }

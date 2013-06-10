@@ -1,9 +1,9 @@
 body {
 	min-width: 320px;
-	color: $default-font-color;
+	color: $body-color;
 }
 
-nav {
+nav.inline {
 	ul {
 		list-style: none;
 		overflow: hidden;
@@ -17,7 +17,6 @@ nav {
 			}
 			a {
 				text-decoration: none;
-				color: $default-font-color;
 			}
 			a:hover {
 				text-decoration: underline;
@@ -27,54 +26,129 @@ nav {
 	}
 }
 
-#utility-bar {
-	background-color: #eee;
-	line-height: 40px;
-	overflow: hidden; 
-	margin-bottom: 20px;
-	
-	.inner {
-		@include container;
-		#utility-nav {
-			float: right;
+#page {
+	max-width: 1230px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#utility-nav {
+	font-size: 11px;
+	line-height: 14px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	ul {
+		> li {
+			text-align: right;
+			margin-left: 10px;
 		}
 	}
 }
 
 #header {
-	@include container;
-	overflow: none;
 	margin-bottom: 20px;
-	#logo { font-size: 30px; }
-	#toggles { float: right; display: none; }
+	position: relative;
+	z-index: 100;
+	overflow: hidden;
 }
 
-#primary-nav { 
-	@include container;
-	margin-bottom: 20px; 
-} 
+#logo {
+	font-size: 30px;
+	line-height: 50px;
+	float: left;
+}
+
+#primary-nav {
+	float: right;
+	margin-bottom: 13px;
+	width: 85%;
+	> ul {
+		> li {
+			margin: 0;
+			background: $wf-blue-lt;
+			border-right: 1px solid #fff;
+			> a {
+				display: block;
+				padding: 0 10px;
+				font-family: $font-primary;
+				font-size: 14px;
+				font-weight: bold;
+				line-height: 50px;
+			}
+		}
+		> li:hover {
+			> a {
+				background-color: $wf-blue;
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+	}
+}
 
 #body-area { }
 
-#feature { @include container; }
+#feature { margin-bottom: 20px; }
 
-#content-area.two-col-a { 
-	@include container;
+.two-col-a { 
+	overflow: hidden;
 	.primary {
-		@include span-columns(9,12);
+		width: 74.4680851%;
+		float: left;
+		> .container {
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			> header {
+				padding: 40px 40px 0 40px;
+			}
+			> .body {
+				> .bar {
+					padding: 0 40px 15px 40px;
+				}
+				> .content {
+					border-top: 1px solid #ccc;
+					padding: 15px 40px;
+				}
+			}
+		}
+		.subcontainer {
+			padding: 0 10px;
+			margin: 20px 0;
+		}
 	}
 	.secondary {
-		@include span-columns(3 omega,12);
+		width: 23.4042553%;
+		float: right;
+		.container {
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			font-size: 12px;
+			line-height: 15px;
+			header {
+				padding: 5px 0 5px 10px;
+				h6 { margin-bottom: 0; }
+			}
+			.body {
+				> .tabs { 
+					margin-bottom: 5px; 
+					padding: 5px 0 5px 10px;
+				}
+				> .content {
+					border-top: 1px solid #ccc;
+					padding: 5px 10px;
+				}
+			}
+			footer {
+				padding: 5px 10px;
+				border-top: 1px solid #ccc;
+			}
+		}
 	}
 }
 
 #footer {
-	display: none;
-	width: 100%;
-	line-height: 40px;
-	color: #fff;
-	background-color: #000;
+	margin-top: 20px;
 	.inner {
-		@include container;
 	}
 }

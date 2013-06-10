@@ -17,8 +17,8 @@
 		}
 	}
 	
-	#content-area.two-col-a .primary { @include span-columns(12 omega,12); }
-	#content-area.two-col-a .secondary { @include span-columns(12 omega,12); }
+	#content-area.two-col-a .primary {  }
+	#content-area.two-col-a .secondary {  }
 	
 	#footer {
 		display: block;

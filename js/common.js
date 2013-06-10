@@ -1,14 +1,108 @@
 /*
-	GLOBAL VARIABLES
+	GLOBALS
 */
 
 var smallScreen = false;
+var smallScreenToggles;
+
+function browserResize () {
+	
+	var windowWidth = $(window).width();
+
+	if (windowWidth < 768) {
+
+		smallScreen = true;
+
+		if ( ! smallScreenToggles.data("l5-collapsibleMenu") ) {
+			smallScreenToggles.collapsibleMenu({ toggle: '.toggle-small-screen', collapsible : '.body' });
+		}
+						
+		// @@@ DO STUFF HERE
+
+	} else {
+		
+		smallScreen = false;
+		
+		$('#primary-nav').show();
+		
+		if ( smallScreenToggles.data("l5-collapsibleMenu") ) {
+			smallScreenToggles.collapsibleMenu('destroy');
+		}
+		
+		// @@@ DO STUFF HERE
+		
+	}
+}
+
+/*
+	FORM VALIDATION DEFAULTS
+*/
+
+
+// VALIDATION MESSAGES
+$.extend( $.validator.messages, {
+	required: "Required",
+	email: "Email Address Invalid"
+});
+
+$.validator.setDefaults({
+	errorElement : "strong",
+	onfocusout : function (element) { 
+		$(element).valid();
+	},
+	onclick : function (element) {
+		var $element = $(element);
+		
+		if ( $element.context.nodeName.toLowerCase() != 'select' ) {
+			$(element).valid();
+		}
+	},
+	showErrors : function (errorMap, errorList) {
+
+		this.defaultShowErrors();
+		
+	},
+	unhighlight : function (element, errorClass, validClass) {
+		var $element = $(element);
+		
+		$element.removeClass(errorClass).addClass(validClass);
+	}
+});
 
 /*
 	DOM READY
 */
 
 $(function () {
+	
+	/*
+		RESPONSIVE FUNCTIONALITY
+	*/
+	
+	var resizeDelay;
+	
+	// INITIALIZE GLOBALS
+	smallScreenToggles = $('#body-area');
+		
+	// INITIALIZE
+	browserResize();
+	
+	$(window).resize(function() {
+		
+		clearTimeout(resizeDelay);
+		resizeDelay = setTimeout(function () {
+			
+			browserResize();
+			
+		}, 200);
+		
+		
+	});
+	
+	
+	/*
+		CAROUSELS
+	*/
 	
 	$('.carousel').carousel({ speed : 7500, infinite : true, autoSize : true });
 	
@@ -36,37 +130,6 @@ $(function () {
 				}
 			});
 		}
-	});
-	
-	/*
-		ON BROWSER RESIZE
-	*/
-			
-	// DETECTS CHANGES TO WINDOW SIZING
-	$(window).resize(function() {
-
-		var windowWidth = $(window).width();
-
-		if (windowWidth <= 768) {
-
-			smallScreen = true;
-							
-			// $('#footer').stickyFooter('relinquish');
-			
-			// @@@ DO STUFF HERE
-
-		} else {
-			
-			smallScreen = false;
-			
-			$('#primary-nav').show();
-			
-			// $('#footer').stickyFooter('apply');
-			
-			// @@@ DO STUFF HERE
-			
-		}
-
 	});
 			
 	/*

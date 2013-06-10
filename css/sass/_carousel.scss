@@ -5,8 +5,10 @@
   position: relative;
 	background: #eee;
 	.carousel-indicators {
-		position: absolute; 
-		left: 20px; 
+		position: absolute;
+		width: 100%;
+		text-align: center; 
+		left: 0; 
 		bottom: 5px;
 		a {
 			text-decoration: none; 
@@ -26,11 +28,11 @@
 		cursor: pointer;
 	}
 	.forward {
-		background: url(../images/ico-carousel-arrow-right.gif) no-repeat;
+		background: url(../images/icn-carousel-arrow-right.png) no-repeat;
 		right: 20px;
 	}	
 	.back {
-		background: url(../images/ico-carousel-arrow-left.gif) no-repeat;
+		background: url(../images/icn-carousel-arrow-left.png) no-repeat;
 		left: 20px;
 	}
 	.frame {
