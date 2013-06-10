@@ -122,3 +122,83 @@
 		}		
 	}	
 }
+
+.widget-carousel {
+	padding: 0 38px;
+	position: relative;
+
+	.carousel-links {
+		display: none;
+	}
+
+	.arrow {
+		background-position: center center;
+		background-repeat: no-repeat;
+		display: block;
+		height: 36px;
+		position: absolute;
+		top: 0;
+		width: 37px;
+
+		span {
+			display: none;
+		}
+	}
+	.arrow:hover {
+		cursor: pointer;
+	}
+	.arrow.back {
+		background-image: image-url('btn-previous.png');
+		left: 0;
+	}
+	.arrow.forward {
+		background-image: image-url('btn-next.png');
+		right: 0;
+	}
+
+	.frame {
+		overflow: auto;
+		position: absolute;
+		top: 0;
+
+		ul {
+			list-style-image: none;
+			list-style-position: outside;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			width: 9999px;
+
+			li {
+				display: block;
+				float: left;
+				height: 36px;
+				margin: 0 1px;
+				padding: 0;
+				position: relative;
+				width: 46px;
+
+				img {
+					height: 100%;
+					width: 100%;
+				}
+			}
+			li:hover {
+				cursor: pointer;
+			}
+			li.active {
+				background-color: $wf-blue-lt;
+				height: 32px;
+				margin: 0;
+				padding: 2px;
+				width: 44px;
+			}
+		}
+	}
+}
+
+a.preview.gallery { width: 100%; display: block; position: relative; margin-bottom: 10px; }
+a.preview.gallery img { width: 100%; display: block; }
+

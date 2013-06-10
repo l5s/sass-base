@@ -6,8 +6,8 @@
 .button {
 	border: none;
 	padding: 0 10px;
-	background: $lgt-blue;
-	color: $blue;
+	background: $wf-blue-lt;
+	color: $wf-blue;
 	font: normal 12px/32px arial, sans-serif;
 	text-decoration: none;
 	display: inline-block;
@@ -29,7 +29,7 @@ ul.tabs {
 		a {
 			display: block;
 			padding: 5px 15px;
-			background-color: $lgt-blue;
+			background-color: $wf-blue-lt;
 			cursor: pointer;
 			text-align: center;
 			font-size: 12px;
@@ -39,8 +39,8 @@ ul.tabs {
 		}
 		&.selected a {
 			font-weight: bold;
-			color: $gray;
-			background-color: $lgt-gray;
+			color: $wf-gray;
+			background-color: $wf-gray-lt;
 		}
 	}
 }

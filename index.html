@@ -5,6 +5,84 @@
   <title>@@@ | Home</title>
 	<!--#include file="include/head-tags.html" -->
 	<!--#include file="include/scripts.html" -->
+	<script>
+		$(function () {
+			
+			/*
+				INITIALIZE CAROUSEL
+			*/
+			
+			var widgetCarousel = $('#widget-gallery').carousel({
+				speed : 0,
+				autoItemWidth : false,
+				init : function (carouselObject) {
+					
+					var gallery 		= $(carouselObject.element),
+						thumbs 			= gallery.find('img'),
+						preview 			= gallery.parents('figure').find('.preview'),
+						img				= preview.find('img'),
+						galleryOverlay = $('#gallery-overlay');
+		
+					$(window).on({
+						'resize.gallery' : function () {
+							preview.height( img.height() );
+						},			
+						load : function () {
+							$(this).trigger('resize.gallery');
+						}
+					});
+					
+					// When a thumbnail is clicked
+					thumbs.click(function() {
+						
+						var clicked 		= $(this),
+								previewUrl 	= clicked.attr('data-preview'),
+								largeUrl		= clicked.attr('data-large'),
+								title 		= clicked.attr('title'),
+								alt 			= clicked.attr('alt');
+		
+						// Add active class to clicked
+						thumbs.parent('li').removeClass('active');
+						clicked.parent('li').addClass('active');
+						
+						var img = preview.find('img').attr({
+							'src' : previewUrl,
+							'title' : title,
+							'alt' : alt
+						});
+						
+						/* FADE
+						
+						var newImage = new Image();
+						
+						newImage.onload = function() {
+							
+							preview
+								.find("img")
+								.fadeOut('slow', function () { 
+										$(this).remove(); 
+									});
+									
+							$(newImage)
+								.hide()
+								.appendTo(preview)
+								.fadeIn('slow');
+								
+						};
+						newImage.src = previewUrl;
+						newImage.title = title;
+						newImage.alt = alt;
+						
+						*/
+						
+						// Update the big image in the overlay
+						galleryOverlay.find('img').attr('src', largeUrl);
+					});
+				}
+			});
+			
+		});
+	</script>
 </head>
 
 <body id="index" class="home">
@@ -34,11 +112,11 @@
 			  <div class="primary">
 				 <h5 class="hide">Primary content:</h5>
 				 <div class="container">
-				 	<header class="toggle-small-screen"><h1>Welcome</h1></header>
+				 	<header><h1>Welcome</h1></header>
 					<div class="body">
 						<div class="content">
 							<p>Uptiur, cor atem ratio tet, ommolo mos pos vendaec uptationese plignit, sincia vides dis dianissit audis nieni nisi ut et acculpa nonsequ amend. Ebit enia sam nullupt aturit, quae. Tia net ipsape ommo ventur sitatium.</p>
-							<button class="button" data-overlay="#my-overlay" class="overlay-trigger">Open Overlay</button>
+							<button class="button" data-overlay="#gallery-overlay" class="overlay-trigger">Open Overlay</button>
 						</div> <!-- /content -->
 					</div> <!-- /body -->
 				 </div> <!-- /container -->				 
@@ -49,10 +127,35 @@
 				 <h5 class="hide">Secondary content:</h5>
 				 
 				 <div class="container">
-				 	<header class="toggle-small-screen"><h6>Title</h6></header>
+				 	<header class="toggle-small-screen"><h6>GALLERY</h6></header>
 					<div class="body">
 						<div class="content">
-							<p>[Secondary content]</p>
+							<figure>
+								<a class="preview gallery overlay-trigger" href="#gallery-overlay">
+									<img src="http://placehold.it/230x230&text=1" title="Title" alt="Alt" />
+								</a>
+								<div id="widget-gallery" class="widget-carousel">
+									<div class="frame">
+									  <ul>
+										 <li class="active">
+											<img src="http://placehold.it/48x36&text=1" data-preview="http://placehold.it/230x230&text=1" data-large="http://placehold.it/960x680&text=1" alt="Alt" title="Title" />
+										 </li>
+										 <li>
+											<img src="http://placehold.it/48x36&text=2" data-preview="http://placehold.it/230x230&text=2" data-large="http://placehold.it/960x680&text=2" alt="Alt 2" title="Title 2" />
+										 </li>
+										 <li>
+											<img src="http://placehold.it/48x36&text=3" data-preview="http://placehold.it/230x230&text=3" data-large="http://placehold.it/960x680&text=3" alt="Alt 3" title="Title 3" />
+										 </li>
+										 <li>
+											<img src="http://placehold.it/48x36&text=4" data-preview="http://placehold.it/230x230&text=4" data-large="http://placehold.it/960x680&text=4" alt="Alt 4" title="Title 4" />
+										 </li>
+										 <li>
+											<img src="http://placehold.it/48x36&text=5" data-preview="http://placehold.it/230x230&text=5" data-large="http://placehold.it/960x680&text=5" alt="Alt 5" title="Title 5" />
+										 </li>
+									  </ul>
+									</div> <!-- /.frame -->
+								</div> <!-- /carousel -->
+						  </figure>
 						</div> <!-- /content -->
 					</div> <!-- /body -->
 				 </div> <!-- /container -->
@@ -67,7 +170,7 @@
 		
   </div> <!-- /page -->
     
-  <div id="my-overlay" class="overlay" style="display: none;">
+  <div id="gallery-overlay" class="overlay" style="display: none;">
   	<header>
       <h1>[Title]</h1>
     </header>

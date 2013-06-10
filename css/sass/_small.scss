@@ -33,11 +33,10 @@
 		position: absolute;
 		top: 50px;
 		z-index: 100;
-		background-color: #eee;
 		> ul {
 			> li {
-				margin: 0 0 4px 0;
 				border-right: none;
+				border-bottom: 1px solid #fff;
 				float: none;
 				> a {
 					text-transform: uppercase;
@@ -67,9 +66,8 @@
 	}
 	
 	.toggle-small-screen {
-		@include sprites-sprite(icn-collapse-inactive);
-		background-color: $wf-blue-lt;
-		padding: 0 10px !important;
+		background: url(../images/icn-collapse-inactive.png) 5px 10px $wf-blue-lt no-repeat;;
+		padding: 0 30px !important;
 		color: $wf-blue;
 		cursor: pointer;
 		font-family: $font-primary;
