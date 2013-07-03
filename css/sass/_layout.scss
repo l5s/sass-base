@@ -27,9 +27,6 @@ nav.inline {
 }
 
 #page {
-	max-width: 1230px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 #utility-nav {
@@ -47,6 +44,7 @@ nav.inline {
 }
 
 #header {
+	@include outer;
 	margin-bottom: 20px;
 	position: relative;
 	z-index: 100;
@@ -86,9 +84,11 @@ nav.inline {
 	}
 }
 
-#body-area { }
+#body-area {
+	@include outer;
+}
 
-#feature { margin-bottom: 20px; }
+#feature { margin-bottom: 20px; @include outer; }
 
 .two-col-a { 
 	overflow: hidden;
@@ -149,5 +149,6 @@ nav.inline {
 #footer {
 	margin-top: 20px;
 	.inner {
+		@include outer;
 	}
 }
