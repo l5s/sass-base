@@ -1,0 +1,56 @@
+#footer {
+	@include outer;
+	padding: 0 20px 20px 20px;
+	font-size: 12px;
+	line-height: 15px;
+	overflow: hidden;
+	border-top: 3px solid $wf-gray;
+
+	.inner {
+		padding-top: 20px;
+	}
+	.logo { display: block; float: left; margin-bottom: 20px; }
+	.body {
+		width: 82.553191%;
+		float: right;
+	}
+	nav {
+		font-size: 11px;
+	}
+	p {
+		font-size: 11px;
+		line-height: 14px;
+		margin-bottom: 3px;
+	}
+	.legal {
+		a {
+			color: inherit;
+			text-decoration: underline;
+		}
+	}
+}
+
+@media (max-width: 568px) {
+	
+	#footer {
+		.logo { float: none; }
+		.body {
+			width: auto;
+			float: none;
+		}
+		nav {
+			font-size: 14px;
+			margin-bottom: 20px;
+			ul {
+				li {
+					float: none;
+					padding: 7px 0;
+					margin: 0;
+					border-top: 1px solid $wf-gray;
+				}
+				li:first-child { border: none; }
+			}
+		}
+	}
+	
+}

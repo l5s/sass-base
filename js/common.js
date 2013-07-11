@@ -3,35 +3,68 @@
 */
 
 var smallScreen = false;
-var smallScreenToggles;
 
-function browserResize () {
+/*
+	RESPONSIVE FUNCTIONALITY
+*/
+
+// TEST MEDIA QUERIES SUPPORT
+if ( Modernizr.mq('only all') ) {
 	
-	var windowWidth = $(window).width();
-
-	if (windowWidth < 768) {
-
-		smallScreen = true;
-
-		if ( ! smallScreenToggles.data("l5-collapsibleMenu") ) {
-			smallScreenToggles.collapsibleMenu({ toggle: '.toggle-small-screen', collapsible : '.body' });
+	$(function () {
+		
+		var smallScreenToggles = $('#body-area'),
+			resizeDelay;
+			
+		function browserResize () {
+		
+			if ( Modernizr.mq('only screen and (max-width: 767px)') && ! smallScreen ) {		
+		
+				smallScreen = true;
+		
+				if ( ! smallScreenToggles.data("l5-collapsibleMenu") ) {
+					
+					// INITIALIZE COLLAPSIBLE DRAWERS
+					smallScreenToggles.collapsibleMenu({ toggle: '.toggle-small-screen', collapsible : '.body' });
+					
+				}
+	
+				
+			} else if ( smallScreen !== false ) {
+				
+				smallScreen = false;
+				
+				// ENSURE MEGANAV ISN'T HIDDEN
+				$('#mega-nav').show();
+				
+				if ( smallScreenToggles.data("l5-collapsibleMenu") ) {
+					
+					// REMOVE COLLAPSIBLE DRAWERS
+					smallScreenToggles.collapsibleMenu('destroy');
+					
+				}
+				
+			}
 		}
-						
-		// @@@ DO STUFF HERE
-
-	} else {
 		
-		smallScreen = false;
+		// INITIALIZE
+		browserResize();
 		
-		$('#primary-nav').show();
-		
-		if ( smallScreenToggles.data("l5-collapsibleMenu") ) {
-			smallScreenToggles.collapsibleMenu('destroy');
-		}
-		
-		// @@@ DO STUFF HERE
-		
-	}
+		$(window).resize(function() {
+			
+			// CLEAR UNACTUALIZED TIMEOUT
+			clearTimeout(resizeDelay);
+			
+			resizeDelay = setTimeout(function () {
+				
+				browserResize();
+				
+			}, 200);
+			
+		});
+			
+	});
+	
 }
 
 /*
@@ -74,31 +107,17 @@ $.validator.setDefaults({
 */
 
 $(function () {
-	
+		
 	/*
-		RESPONSIVE FUNCTIONALITY
+		DYNAMICALLY SET LINEHEIGHT TO THE HEIGHT OF THE PARENT
 	*/
 	
-	var resizeDelay;
-	
-	// INITIALIZE GLOBALS
-	smallScreenToggles = $('#body-area');
+	$('.js-valign-text').each(function () {
+		var $target = $(this),
+				h = $target.height();
 		
-	// INITIALIZE
-	browserResize();
-	
-	$(window).resize(function() {
-		
-		clearTimeout(resizeDelay);
-		resizeDelay = setTimeout(function () {
-			
-			browserResize();
-			
-		}, 200);
-		
-		
+		$target.css({ 'line-height' : h + 'px' });
 	});
-	
 	
 	/*
 		CAROUSELS
@@ -136,11 +155,11 @@ $(function () {
 		INIT TOGGLE FOR PRIMARY NAVIGATION
 	*/
 	
-	var primaryNav = $('#primary-nav');
+	var megaNav = $('#mega-nav');
 	
 	$('#toggle-menu').click(function () {
 		
-		primaryNav.slideToggle();
+		megaNav.slideToggle();
 		
 		return false;
 	});

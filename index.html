@@ -19,9 +19,9 @@
 					
 					var gallery 		= $(carouselObject.element),
 						thumbs 			= gallery.find('img'),
-						preview 			= gallery.parents('figure').find('.preview'),
+						preview 		= gallery.parents('figure').find('.preview'),
 						img				= preview.find('img'),
-						galleryOverlay = $('#gallery-overlay');
+						galleryOverlay 	= $('#gallery-overlay');
 		
 					$(window).on({
 						'resize.gallery' : function () {
@@ -37,9 +37,9 @@
 						
 						var clicked 		= $(this),
 								previewUrl 	= clicked.attr('data-preview'),
-								largeUrl		= clicked.attr('data-large'),
+								largeUrl	= clicked.attr('data-large'),
 								title 		= clicked.attr('title'),
-								alt 			= clicked.attr('alt');
+								alt 		= clicked.attr('alt');
 		
 						// Add active class to clicked
 						thumbs.parent('li').removeClass('active');
@@ -93,15 +93,42 @@
 
 		<div id="feature">
 		
-		  <div id="carousel" class="carousel">
-			 <div class="frame">
-				<ul>
-				  <li><div class="content"><img src="http://placehold.it/940x250&text=1" /></div></li>
-				  <li><div class="content"><img src="http://placehold.it/940x250&text=2" /></div></li>
-				  <li><div class="content"><img src="http://placehold.it/940x250&text=3" /></div></li>
-				</ul>
-			 </div> <!-- /.frame -->
-		  </div> <!-- /carousel -->
+			<div id="carousel" class="carousel">
+				<div class="frame">
+					<ul>
+						<li>
+							<figure><img src="http://placehold.it/300x225" alt="[Feature Pic]" /></figure>
+							<div class="content">
+								<p><small>Today at 1:25 PM CST&nbsp;&nbsp;&nbsp;<a href="#" class="comments-icn">12 Comments</a></small></p>
+								<h2>FEATURE HEADLINE #1</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc molestie, orci non sodales gravida, nunc eros fringilla est, nec ultrices augue mi eu enim.</p>
+								<a href="#" class="button">Learn More</a>
+							</div> <!-- /content -->
+							<div class="clear"></div>
+						</li>
+						<li>
+							<figure><img src="http://placehold.it/300x225" alt="[Feature Pic]" /></figure>
+							<div class="content">
+								<p><small>Today at 1:25 PM CST&nbsp;&nbsp;&nbsp;<a href="#" class="comments-icn">12 Comments</a></small></p>
+								<h2>FEATURE HEADLINE #2</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc molestie, orci non sodales gravida, nunc eros fringilla est, nec ultrices augue mi eu enim.</p>
+								<a href="#" class="button">Learn More</a>
+							</div> <!-- /content -->
+							<div class="clear"></div>
+						</li>
+						<li>
+							<figure><img src="http://placehold.it/300x225" alt="[Feature Pic]" /></figure>
+							<div class="content">
+								<p><small>Today at 1:25 PM CST&nbsp;&nbsp;&nbsp;<a href="#" class="comments-icn">12 Comments</a></small></p>
+								<h2>FEATURE HEADLINE #3</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc molestie, orci non sodales gravida, nunc eros fringilla est, nec ultrices augue mi eu enim.</p>
+								<a href="#" class="button">Learn More</a>
+							</div> <!-- /content -->
+							<div class="clear"></div>
+						</li>
+					</ul>
+				</div> <!-- /.frame -->
+			</div> <!-- /carousel -->
 		  
 		</div> <!-- /feature -->
     
@@ -112,12 +139,10 @@
 			  <div class="primary">
 				 <h5 class="hide">Primary content:</h5>
 				 <div class="container">
-				 	<header><h1>Welcome</h1></header>
+				 	<h1 class="toggle-small-screen">What’s New</h1>
 					<div class="body">
-						<div class="content">
-							<p>Uptiur, cor atem ratio tet, ommolo mos pos vendaec uptationese plignit, sincia vides dis dianissit audis nieni nisi ut et acculpa nonsequ amend. Ebit enia sam nullupt aturit, quae. Tia net ipsape ommo ventur sitatium.</p>
-							<button class="button" data-overlay="#gallery-overlay" class="overlay-trigger">Open Overlay</button>
-						</div> <!-- /content -->
+						<p>Uptiur, cor atem ratio tet, ommolo mos pos vendaec uptationese plignit, sincia vides dis dianissit audis nieni nisi ut et acculpa nonsequ amend. Ebit enia sam nullupt aturit, quae. Tia net ipsape ommo ventur sitatium.</p>
+						<button class="button" data-overlay="#gallery-overlay" class="overlay-trigger">Open Overlay</button>
 					</div> <!-- /body -->
 				 </div> <!-- /container -->				 
 				 							  
@@ -127,7 +152,7 @@
 				 <h5 class="hide">Secondary content:</h5>
 				 
 				 <div class="container">
-				 	<header class="toggle-small-screen"><h6>GALLERY</h6></header>
+				 	<h5 class="toggle-small-screen">GALLERY</h5>
 					<div class="body">
 						<div class="content">
 							<figure>

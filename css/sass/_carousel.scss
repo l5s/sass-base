@@ -2,14 +2,11 @@
 /* CSS Document */
 
 .carousel {
-  position: relative;
-	background: #eee;
-	.carousel-indicators {
+	position: relative;
+	.carousel-links {
 		position: absolute;
-		width: 100%;
-		text-align: center; 
-		left: 0; 
-		bottom: 5px;
+		left: 80px; 
+		top: 50px;
 		a {
 			text-decoration: none; 
 			margin-right: 10px; 
@@ -53,13 +50,95 @@
 				float: left;
 				padding: 0;
 				margin: 0;
-				img { 
-					display: block; 
-					width: 100%;
+				padding: 30px 60px;
+				.content {
+					width: 45.6140351%;
+					float: right;
+				}
+				figure {
+					width: 50.877193%;
+					float: left;
+					line-height: 225px;
+					img {
+						width: 100%;
+						vertical-align: top;
+					}
 				}
 			}			
 		}		
 	}	
+}
+@media (max-width: 480px) {
+	
+	.carousel {
+		margin-bottom: 20px;
+		.carousel-links {
+			position: absolute;
+			left: 0; 
+			top: 50px;
+			width: 100%;
+			text-align: center;
+		}
+		
+		.frame {
+			ul {
+				li {
+					height: auto;
+					figure {
+						width: 100%;
+						float: none;
+						margin-bottom: 20px;
+						line-height: normal;
+						img {
+							width: 100%;
+						}
+					}
+					.content {
+						width: auto;
+						position: static;
+					}
+				}
+			}
+		}
+	}	
+
+
+}
+
+@media (max-width: 320px) {
+	
+	.carousel {
+		background: none;
+		padding: 0 20px;
+		margin-bottom: 20px;
+		.arrow {
+			top: 0;
+			margin: 0;
+			height: 174px;
+		}
+		.forward {
+			background: url(../images/icn-carousel-arrow-right-ss.png) no-repeat;
+			right: 20px;
+		}
+		.back {
+			background: url(../images/icn-carousel-arrow-left-ss.png) no-repeat;
+			left: 20px;
+		}
+		.frame {
+			ul {
+				li {
+					padding: 0;
+					figure {
+						img {
+							width: 230px;
+							margin: 0 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+	
 }
 
 .multi-carousel {
