@@ -25,6 +25,101 @@
 	float: left;
 }
 
+/*
+	DROPDOWN MENU
+*/
+
+div.dropdown {
+	display: none;
+	position: absolute;
+	right: 0;
+	width: 100%;
+	background: $wf-blue-lt;
+	border-top: 10px solid $wf-blue;
+	z-index: 100;
+	header {
+		padding: 20px 30px;
+		border-bottom: 1px solid $wf-blue;
+		color: #666;
+		a { font-weight: bold; }
+	}
+	.inner {
+		padding: 20px 2.0408163%;
+		overflow: hidden;
+		header {
+			padding: 0 0 20px 0;
+			margin-bottom: 20px;
+		}
+	}
+	.close-btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	h5, h6 { margin-bottom: 5px; }
+	p { font-size: 12px; line-height: 21px; }
+	ul { padding: 0; margin-left: 0; margin-bottom: 20px; }
+	.column {
+		border-right: 1px solid $wf-blue;
+		width: 21.3%;
+		min-height: 400px;
+		padding: 0 1.020408%;
+		float: left;
+		position: relative;
+		h4 {
+			margin: 10px 0 5px 0;
+		}
+		&.last {
+			border-right: none !important;
+		}
+	}
+	.column {
+		margin-right: 2.0408163%;		
+	}
+	.three-col .column {
+		width: 29%;
+		margin-right: 2.816901%;
+	}
+	.column.last { margin-right: 0; }
+	.feature {
+		border-right: 1px solid $wf-blue;
+		padding: 0 3.0661224%;
+		margin-right: 0;
+		width: 18.367347%;
+		height: 100%;
+		float: left;
+		figure { padding: 20px 0; }
+		img { width: 100%; }
+	}
+}
+
+div.dropdown {
+	&.columns-1 {
+		width: 25%;		/* 205px */
+		.column {
+			width: 91.584158%;
+		}
+	}
+	&.columns-2 {
+		width: 50%;		/* 450px */
+		.column {
+			width: 43.111111%;
+		}
+		.column + .column {
+			margin-left: 4.444444%;
+		}
+	}
+	&.columns-3 {
+		width: 75%;		/* 695px */
+		.column {
+			width: 28.393285%;
+		}
+		.column + .column {
+			margin-left: 2.877698%;
+		}
+	}
+}
+
 #mega-nav {
 	@include outer;
 	background: $wf-blue-lt;
@@ -50,6 +145,16 @@
 					text-decoration: none;
 				}
 			}
+			> li.active {
+				> a {
+					background-color: $wf-blue;		
+					color: #fff;
+					text-decoration: none;
+				}
+				.dropdown {
+					display: block !important;
+				}
+			}
 		}
 	}
 	nav.secondary {
@@ -71,6 +176,48 @@
 	margin-bottom: 20px;
 	.right {
 		padding-right: 20px;
+	}
+}
+
+/*
+	RESULTS DROPDOWN
+*/
+
+.results {
+	display: none;
+	border: 1px solid #333;
+	position: relative;
+	width: 380px; 
+	padding: 10px; 
+	background: #fff; 
+	z-index: 100;
+	line-height: normal;
+	th {
+		background-color: $wf-gray-lt;
+		font-weight: normal;
+		vertical-align: top;
+		text-align: right;
+		padding: 10px;
+	}
+	td {
+		padding: 10px;
+		a {
+			display: block;
+		}
+	}
+	ul {
+		margin-bottom: 0;
+		a { display: block; }
+		a:active { outline: none; }
+		li.active {
+			a {
+				font-weight: bold;
+			}
+		}
+	}
+	&.small {
+		width: 150px;
+		margin-left: -110px;
 	}
 }
 

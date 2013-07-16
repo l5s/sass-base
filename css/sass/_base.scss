@@ -8,14 +8,14 @@
 	GLOBALS
 */
 
-$body-color: 	#000;
+$body-color: 		#000;
 
 $wf-blue-lt: 		rgb(214, 235, 245);
 $wf-blue: 			#3399CC;
 $wf-gray-lt: 		#eee;
 $wf-gray: 			#ccc;
 
-$font-primary: 	'nimbus-sans-condensed', sans-serif;
+$font-primary: 		'nimbus-sans-condensed', sans-serif;
 $font-secondary: 	'Helvetica', 'Arial', sans-serif;
 
 /*
@@ -89,6 +89,18 @@ dl { margin: 0 0 1.5em 0; }
 dt { font-weight: bold; }
 dd { margin-left: 1.5em; }
 
+ul.ruled {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	li  {
+		padding: 7px 0;
+	}
+	li + li {
+		border-top: 1px dotted #000;
+	}
+}
+
 /* QUOTES */
 blockquote { font-style: italic; }
 cite {}
@@ -136,7 +148,7 @@ tr.odd th { background-color: #f0efee; padding-top: 10px; }
 
 /* BAR */
 
-.bar { position: relative; overflow: hidden; }
+.bar { position: relative; @include pie-clearfix; }
 .bar .left { float: left; }
 .bar .middle { position: absolute; top: 0; left: 0; width: 100%; text-align: center; }
 .bar .right { float: right }

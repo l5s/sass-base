@@ -164,6 +164,70 @@ $(function () {
 		return false;
 	});
 	
+	megaNav.find('> nav > ul > li').each(function ( index ) {
+		
+		var $target = $(this),
+			delay;
+		
+		$target.find('> a').on({
+			/*
+			'touchend' : function (e) {
+				e.preventDefault();			
+				e.target.click();			
+			},
+			*/
+			'click' : function ( event ) {
+				if ( smallScreen ) {
+					event.preventDefault();
+					$target.toggleClass('active');
+					return false;
+				}
+			},
+		});
+		
+		$target.on({
+			'mouseenter' : function  ( event ) {
+				if ( ! smallScreen ) {
+					delay = setTimeout(function () {
+						$target.addClass('active');
+					}, 200);
+				}
+			}, 
+			'mouseleave' : function ( event ) {
+				if ( ! smallScreen ) {
+					clearTimeout(delay);
+					$target.removeClass('active');
+				}
+			}
+		});		
+		
+	});
+
+	/*
+		SEARCH DROPDOWN
+	*/
+	
+	var search = $('#search-input').attach({ 
+			selector : '#search-results',
+			autoStart : false,
+			relative : true,
+			position : 'southeast'
+		}).on({
+			'keypress' : function () {
+				search.attach('open', true);
+			},
+			'focusout' : function () {
+				//search.attach('close');
+			}
+		});
+	
+	$('#search-results .close-btn').click(function () {
+		
+		search.attach('close');
+		
+		return false;
+	});
+	
 });
 
 /*

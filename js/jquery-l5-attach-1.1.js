@@ -19,7 +19,7 @@
 	$('.select-trigger').attach ({ 
 		event : 'hover',
 		relative : true,
-		defaultPosition : 'south',		
+		position : 'south',		
 		init : function (o) {
 					
 			o.attached.find('li').bind('click', function () {
@@ -65,7 +65,7 @@
 		
 			autoStart : true,
 			event : 'hover',
-			defaultPosition : 'north',
+			position : 'north',
 			relative : false,
 			center : false,
 			
@@ -109,7 +109,7 @@
 				$.error( 'attach: "' +  ref + '" is invalid' );
 			}
 			
-			this.side = this.element.attr("data-position") || this.options.defaultPosition;
+			this.side = this.element.attr("data-position") || this.options.position;
 			
 			// INITIALIZE TOOLTIP
 			this.attached
@@ -131,7 +131,7 @@
 				o.align();
 			})
 			
-    },
+		},
 		
 		isOpen : function () {
 			return this.attached.is(':visible');
@@ -248,6 +248,24 @@
 						y = y + (this.element.outerHeight() / 2);
 						
 					break;
+				case 'northeast' || 'ne':
+				
+					x = offset.left + this.element.outerWidth() - this.attached.outerWidth();
+					y = offset.top;
+					
+					if (this.options.center)
+						y = y + (this.element.outerHeight() / 2);
+						
+					break;
+				case 'northwest' || 'nw':
+				
+					x = offset.left;
+					y = offset.top;
+					
+					if (this.options.center)
+						y = y + (this.element.outerHeight() / 2);
+						
+					break;
 				case 'east' || 'e':
 				
 					x = offset.left + this.element.outerWidth();
@@ -260,6 +278,24 @@
 				case 'south' || 's':
 				
 					x = offset.left + (this.element.outerWidth() / 2);
+					y = offset.top + this.element.outerHeight();
+					
+					if (this.options.center)
+						y = y - (this.element.outerHeight() / 2);
+						
+					break;
+				case 'southwest' || 'sw':
+				
+					x = offset.left;
+					y = offset.top + this.element.outerHeight();
+					
+					if (this.options.center)
+						y = y - (this.element.outerHeight() / 2);
+						
+					break;
+				case 'southeast' || 'se':
+				
+					x = offset.left + this.element.outerWidth() - this.attached.outerWidth();
 					y = offset.top + this.element.outerHeight();
 					
 					if (this.options.center)

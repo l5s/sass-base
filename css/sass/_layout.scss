@@ -4,13 +4,13 @@ body {
 }
 
 nav.inline {
-	ul {
+	> ul {
+		@include pie-clearfix;
 		list-style: none;
-		overflow: hidden;
 		padding: 0;
 		margin: 0;
 		
-		li {
+		> li {
 			float: left;
 			& + li {
 				margin-left: 20px;
