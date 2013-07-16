@@ -295,7 +295,7 @@
 					break;
 				case 'southeast' || 'se':
 				
-					x = offset.left + this.element.outerWidth() - this.attached.outerWidth();
+					x = offset.left + this.element.outerWidth();
 					y = offset.top + this.element.outerHeight();
 					
 					if (this.options.center)

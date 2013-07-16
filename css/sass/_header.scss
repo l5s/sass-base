@@ -120,6 +120,10 @@ div.dropdown {
 	}
 }
 
+/*
+	MEGA NAV
+*/
+
 #mega-nav {
 	@include outer;
 	background: $wf-blue-lt;
@@ -188,6 +192,7 @@ div.dropdown {
 	border: 1px solid #333;
 	position: relative;
 	width: 380px; 
+	margin-left: -400px;
 	padding: 10px; 
 	background: #fff; 
 	z-index: 100;
