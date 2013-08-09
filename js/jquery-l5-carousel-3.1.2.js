@@ -157,13 +157,9 @@
 								pages = Math.ceil( items.length / Math.round(visible) );
 				
 								if (pages === 1) {
-									backBtn.addClass('single-slide');
-									forwardBtn.addClass('single-slide');
-									linksContainer.addClass('single-slide');
+									element.addClass('single-slide');
 								} else if (pages > 1) {
-									backBtn.removeClass('single-slide');
-									forwardBtn.removeClass('single-slide');
-									linksContainer.removeClass('single-slide');
+									element.removeClass('single-slide');
 								}
 								
 								// RECALCULATE CURRENT PAGE
@@ -236,9 +232,7 @@
 				}
 				
 				if (pages === 1) {
-					backBtn.addClass('single-slide');
-					forwardBtn.addClass('single-slide');
-					linksContainer.addClass('single-slide');
+					element.addClass('single-slide');
 				}
 				
 				// CALLBACK
