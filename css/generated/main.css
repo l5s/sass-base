@@ -676,7 +676,7 @@ div.dropdown {
   position: absolute;
   right: 0;
   width: 100%;
-  background: #d6ebf5;
+  background: #eeeeee;
   border-top: 10px solid #3399cc;
   z-index: 100;
 }

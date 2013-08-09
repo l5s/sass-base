@@ -85,6 +85,8 @@
 		pages : 0,
 		currentPage : 1,
 		linksContainer : null,
+		backBtn : null,
+		forwardBtn : null,
 		autoAdvanceTimer : null,
 		
 		autoSize : function () {
@@ -153,6 +155,16 @@
 								
 								// RECALCULATE PAGES
 								pages = Math.ceil( items.length / Math.round(visible) );
+				
+								if (pages === 1) {
+									backBtn.addClass('single-slide');
+									forwardBtn.addClass('single-slide');
+									linksContainer.addClass('single-slide');
+								} else if (pages > 1) {
+									backBtn.removeClass('single-slide');
+									forwardBtn.removeClass('single-slide');
+									linksContainer.removeClass('single-slide');
+								}
 								
 								// RECALCULATE CURRENT PAGE
 								currentPage = Math.ceil( itemNumber / Math.round(visible) );
@@ -197,16 +209,16 @@
 					
 					// INSERT ARROWS
 					if ( options.insertArrows ) {
-						viewport.after('<a class="arrow back"><span>Back</span></a><a class="arrow forward"><span>Next</span></a>')
+						viewport.after('<a class="arrow back"><span>Back</span></a><a class="arrow forward"><span>Next</span></a>');
 					}
 												
 					// BIND EVENTS TO ARROWS
-					$('.back', element).click(function () {
+					backBtn = $('.back', element).click(function () {
 						carousel.prev();												
 						return false;																						
 					});
 					
-					$('.forward', element).click(function () {
+					forwardBtn = $('.forward', element).click(function () {
 						carousel.next();												
 						return false;
 					});
@@ -221,6 +233,12 @@
 					// HOOK UP PAGE INDICATORS
 					_setupLinks();
 						
+				}
+				
+				if (pages === 1) {
+					backBtn.addClass('single-slide');
+					forwardBtn.addClass('single-slide');
+					linksContainer.addClass('single-slide');
 				}
 				
 				// CALLBACK
