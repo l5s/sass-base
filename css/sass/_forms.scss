@@ -1,0 +1,124 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*
+	DATEPICKER
+*/
+
+.ui-datepicker-trigger { vertical-align: middle; margin-left: 5px; }
+
+/*
+	FORM CONTROLS
+*/
+
+textarea, select, input.text { }
+input.text {
+	padding: 5px 3px;
+}
+input.full {
+	width: 95%;
+}
+input.wide {
+	width: 80%;
+}
+textarea.full {
+	width: 98%;
+}
+
+/*
+	STATUS UTILITIES
+*/
+
+strong.error { 
+	font-size: 12px;
+	line-height: 14.4px;
+	vertical-align: baseline;
+	font-weight: normal;
+	color: #F00; 
+	display: inline-block;
+	min-height: 10px;
+	width: 132px;
+	margin-left: 10px;
+	padding: 8px 10px 8px 16px;
+	background: url(../images/bkg-error.png) no-repeat;
+}
+
+/*
+	GENERAL FORM LAYOUT
+*/
+
+fieldset {
+	
+	&.default {
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	&.box {
+		margin: 0;
+		padding: 20px;
+	}
+	
+	legend {
+		font-size: 13px;
+		line-height: 16.9px;
+		margin-bottom: 10px;
+		padding: 0;
+	}
+	
+}
+
+/* WRAPPERS */
+
+.submit {
+	a { vertical-align: middle; }
+}
+
+.form-group,
+.form-block {
+	@include pie-clearfix;
+	position: relative;
+	margin: 0 0 20px 0;
+	
+	/* GENERAL LABEL STYLING */
+	label {
+		font-size: 15px;
+		font-weight: bold;
+		line-height: 24px;
+		small { font-size: 12px; font-weight: normal; }
+	}	
+}
+.form-group > label {
+	float: left;
+	width: 15%;
+	margin-right: 20px;
+	display: block;
+}
+.form-block > label {
+	display: block;
+}	
+
+/* INLINE FIELDS */
+
+span.field {
+	padding-top: 24px;
+	margin-right: 10px;
+	width: auto;
+	float: left;
+	line-height: 32px;
+	vertical-align: middle;
+	> label {
+		float: none;
+		width: auto;
+		margin-top: -24px;
+		display: block;
+		font-size: 11px;
+		line-height: 16px;
+		font-weight: bold;
+		color: #666;
+	}
+	&.last {
+		margin-right: 0;
+	}
+}

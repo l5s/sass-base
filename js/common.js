@@ -25,7 +25,7 @@ if ( Modernizr.mq('only all') ) {
 				if ( ! smallScreenToggles.data("l5-collapsibleMenu") ) {
 					
 					// INITIALIZE COLLAPSIBLE DRAWERS
-					smallScreenToggles.collapsibleMenu({ toggle: '.toggle-small-screen', collapsible : '.body' });
+					smallScreenToggles.collapsibleMenu({ head: '.toggle-small-screen', collapsible : '.body' });
 					
 				}
 	
@@ -107,7 +107,15 @@ $.validator.setDefaults({
 */
 
 $(function () {
-		
+	
+	/*
+		GENERAL FORM VALIDATION
+	*/
+	
+	$("form.validate").each(function() {
+		$(this).validate({ ignore: ":hidden" });
+	});
+
 	/*
 		DYNAMICALLY SET LINEHEIGHT TO THE HEIGHT OF THE PARENT
 	*/
