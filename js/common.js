@@ -109,6 +109,12 @@ $.validator.setDefaults({
 $(function () {
 	
 	/*
+		DATEPICKER
+	*/
+	
+	$( '.datepicker' ).datepicker({ showOn: "button", buttonImage: 'images/icn-calendar.png', buttonImageOnly: true });
+	
+	/*
 		GENERAL FORM VALIDATION
 	*/
 	
