@@ -151,14 +151,14 @@ $(function () {
 					var total = carousel.items.filter(':not(.cloned, .empty)').length;
 					
 					totalItems.html( total );
-					nthItem.html( (carousel.currentPage * carousel.visible - carousel.visible + 1) + '-' + ((carousel.currentPage * carousel.visible) > total ? total : carousel.currentPage * carousel.visible) );
+					nthItem.html( Math.ceil(carousel.currentPage * carousel.visible - carousel.visible + 1) + '-' + Math.ceil((carousel.currentPage * carousel.visible) > total ? total : carousel.currentPage * carousel.visible) );
 					
 				},
 				afterSlide : function (carousel) {
 					
 					var total = carousel.items.filter(':not(.cloned, .empty)').length;
 					
-					nthItem.html( (carousel.currentPage * carousel.visible - carousel.visible + 1) + '-' + ((carousel.currentPage * carousel.visible) > total ? total : carousel.currentPage * carousel.visible) );
+					nthItem.html( Math.ceil(carousel.currentPage * carousel.visible - carousel.visible + 1) + '-' + Math.ceil((carousel.currentPage * carousel.visible) > total ? total : carousel.currentPage * carousel.visible) );
 					
 				}
 			});
