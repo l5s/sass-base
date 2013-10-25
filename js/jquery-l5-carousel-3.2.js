@@ -154,7 +154,7 @@
 								items = slide.find('> li');
 								
 								// RECALCULATE PAGES
-								pages = Math.ceil( items.length / Math.round(visible) );
+								pages = Math.ceil( items.length / Math.floor(visible) );
 				
 								if (pages === 1) {
 									element.addClass('single-slide');
@@ -163,17 +163,17 @@
 								}
 								
 								// RECALCULATE CURRENT PAGE
-								currentPage = Math.ceil( itemNumber / Math.round(visible) );
+								currentPage = Math.ceil( itemNumber / Math.floor(visible) );
 								
 								// ADD NEW PADDING
 								_padItems();
 			
 								// RESET VIEWPORT POSITION
-								// 1. FIGURE OUT WHICH PAGE ITEH ITEM IS IN: Math.ceil(itemNumber / Math.round(visible))
-								// 2. GET THE ITEMS PRECEEDING IT: (Math.ceil(itemNumber / Math.round(visible)) - 1) * Math.round(visible)
+								// 1. FIGURE OUT WHICH PAGE ITEH ITEM IS IN: Math.ceil(itemNumber / Math.floor(visible))
+								// 2. GET THE ITEMS PRECEEDING IT: (Math.ceil(itemNumber / Math.floor(visible)) - 1) * Math.floor(visible)
 								// 3. ADD CLONED ITEMS: Math.ceil(visible)
 								// 4. FIND PIXEL VALUE: (TOTAL # OF PRECEEDING ITEMS) * itemWidth
-								viewport.scrollLeft( ( (Math.ceil(itemNumber / Math.round(visible)) - 1) * Math.round(visible) + Math.ceil(visible) ) * itemWidth);
+								viewport.scrollLeft( ( (Math.ceil(itemNumber / Math.floor(visible)) - 1) * Math.floor(visible) + Math.ceil(visible) ) * itemWidth);
 		
 								// REDO LINKS
 								linksContainer.children().remove();
@@ -184,7 +184,7 @@
 						} else {
 							
 							// RE-ALIGN THE LEFT SIDE OF THE CURRENT ITEM
-							viewport.scrollLeft(itemWidth * Math.round(visible) * currentPage);
+							viewport.scrollLeft(itemWidth * Math.floor(visible) * currentPage);
 						
 						}
 						
@@ -196,7 +196,7 @@
 				}
 					
 				visible = viewport.innerWidth() / itemWidth;
-				pages = Math.ceil( items.length / Math.round(visible) );
+				pages = Math.ceil( items.length / Math.floor(visible) );
 				
 				// MULTIPLE PAGES?
 				if (pages > 0) {
@@ -300,8 +300,8 @@
 			with ( carousel ) {
 					
 				// 1. Pad so that 'visible' number will always be seen, otherwise create empty items
-				if (( items.length % Math.round(visible) ) != 0) {
-					slide.append( repeat('<li class="empty" />', Math.round(visible) - (items.length % Math.round(visible)) ) );
+				if (( items.length % Math.floor(visible) ) != 0) {
+					slide.append( repeat('<li class="empty" />', Math.floor(visible) - (items.length % Math.floor(visible)) ) );
 					items = slide.find('> li');
 				}
 				
@@ -358,7 +358,7 @@
 
 				var dir = page < currentPage ? -1 : 1,
 						n = Math.abs(currentPage - page),
-						left = itemWidth * dir * Math.round(visible) * n;
+						left = itemWidth * dir * Math.floor(visible) * n;
 
 				// UPDATE PAGE #
 				var newPage = page;
@@ -380,7 +380,7 @@
 							if ( page == 0 ) {
 								
 								// POSITION AT THE END
-								viewport.scrollLeft( ( itemWidth * Math.round(visible) * (pages - 1) ) + itemWidth * Math.ceil(visible) );
+								viewport.scrollLeft( ( itemWidth * Math.floor(visible) * (pages - 1) ) + itemWidth * Math.ceil(visible) );
 								
 							} else if (page > pages) {
 								
@@ -395,7 +395,7 @@
 							$(':nth-child(' + page + ')', linksContainer).addClass('active');
 							currentPage = page;
 							
-							itemNumber = ((currentPage - 1) * Math.round(visible)) + 1;
+							itemNumber = ((currentPage - 1) * Math.floor(visible)) + 1;
 							
 							// CALLBACK FUNCTION
 							options.afterSlide( carousel );
