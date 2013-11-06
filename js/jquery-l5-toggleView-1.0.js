@@ -1,4 +1,25 @@
-// JavaScript Document
+/*
+	MARKUP:
+	
+	<div class="toggle-view">
+		<div class="default">
+			DEFAULT VIEW
+			<a href="#" class="toggle">Edit</a>
+		</div> <!-- /@@@ -->						
+		<div class="hide">
+			@@@
+			<a href="#" class="toggle">Done</a>
+		</div> <!-- /@@@ -->
+	</div> <!-- /toggle -->
+	
+	JAVASCRIPT EXAMPLE:
+	$('.toggle-view').toggleView({
+		beforeToggle : function () {
+			@@@
+		}
+	});
+	
+*/
 
 $.widget( "l5.toggleView", {
 	
