@@ -143,7 +143,7 @@ $(function () {
 	var totalItems = $('#total-items'),
 			nthItem = $('#nth-item');
 			
-	$('.overlay-trigger').overlay({ visible : function () {
+	$('.overlay-carousel-trigger').overlay({ visible : function () {
 			$('.multi-carousel').carousel({
 				speed : 0,
 				autoItemWidth : false,
@@ -165,6 +165,8 @@ $(function () {
 			});
 		}
 	});
+			
+	$('.overlay-trigger').overlay();
 			
 	/*
 		INIT TOGGLE FOR PRIMARY NAVIGATION
