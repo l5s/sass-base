@@ -36,11 +36,8 @@ strong.error {
 	font-weight: normal;
 	color: #F00; 
 	display: inline-block;
-	min-height: 10px;
 	width: 132px;
 	margin-left: 10px;
-	padding: 8px 10px 8px 16px;
-	background: url(../images/bkg-error.png) no-repeat;
 }
 
 /*
@@ -61,9 +58,9 @@ fieldset {
 	}
 	
 	legend {
-		font-size: 13px;
-		line-height: 16.9px;
-		margin-bottom: 10px;
+		font-size: 18px;
+		line-height: 22px;
+		margin-bottom: 20px;
 		padding: 0;
 	}
 	
@@ -84,14 +81,13 @@ fieldset {
 	/* GENERAL LABEL STYLING */
 	label {
 		font-size: 15px;
-		font-weight: bold;
 		line-height: 24px;
 		small { font-size: 12px; font-weight: normal; }
 	}	
 }
 .form-group > label {
 	float: left;
-	width: 15%;
+	width: 25%;
 	margin-right: 20px;
 	display: block;
 }

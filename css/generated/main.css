@@ -1056,42 +1056,39 @@ strong.error {
   font-weight: normal;
   color: #F00;
   display: inline-block;
-  min-height: 10px;
   width: 132px;
   margin-left: 10px;
-  padding: 8px 10px 8px 16px;
-  background: url(../images/bkg-error.png) no-repeat;
 }
 
 /*
 	GENERAL FORM LAYOUT
 */
-/* line 52, ../sass/_forms.scss */
+/* line 49, ../sass/_forms.scss */
 fieldset.default {
   border: none;
   padding: 0;
   margin: 0;
 }
-/* line 58, ../sass/_forms.scss */
+/* line 55, ../sass/_forms.scss */
 fieldset.box {
   margin: 0;
   padding: 20px;
 }
-/* line 63, ../sass/_forms.scss */
+/* line 60, ../sass/_forms.scss */
 fieldset legend {
-  font-size: 13px;
-  line-height: 16.9px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 20px;
   padding: 0;
 }
 
 /* WRAPPERS */
-/* line 75, ../sass/_forms.scss */
+/* line 72, ../sass/_forms.scss */
 .submit a {
   vertical-align: middle;
 }
 
-/* line 79, ../sass/_forms.scss */
+/* line 76, ../sass/_forms.scss */
 .form-group,
 .form-block {
   *zoom: 1;
@@ -1106,35 +1103,34 @@ fieldset legend {
   display: table;
   clear: both;
 }
-/* line 85, ../sass/_forms.scss */
+/* line 82, ../sass/_forms.scss */
 .form-group label,
 .form-block label {
   font-size: 15px;
-  font-weight: bold;
   line-height: 24px;
 }
-/* line 89, ../sass/_forms.scss */
+/* line 85, ../sass/_forms.scss */
 .form-group label small,
 .form-block label small {
   font-size: 12px;
   font-weight: normal;
 }
 
-/* line 92, ../sass/_forms.scss */
+/* line 88, ../sass/_forms.scss */
 .form-group > label {
   float: left;
-  width: 15%;
+  width: 25%;
   margin-right: 20px;
   display: block;
 }
 
-/* line 98, ../sass/_forms.scss */
+/* line 94, ../sass/_forms.scss */
 .form-block > label {
   display: block;
 }
 
 /* INLINE FIELDS */
-/* line 104, ../sass/_forms.scss */
+/* line 100, ../sass/_forms.scss */
 span.field {
   padding-top: 24px;
   margin-right: 10px;
@@ -1143,7 +1139,7 @@ span.field {
   line-height: 32px;
   vertical-align: middle;
 }
-/* line 111, ../sass/_forms.scss */
+/* line 107, ../sass/_forms.scss */
 span.field > label {
   float: none;
   width: auto;
@@ -1154,7 +1150,7 @@ span.field > label {
   font-weight: bold;
   color: #666;
 }
-/* line 121, ../sass/_forms.scss */
+/* line 117, ../sass/_forms.scss */
 span.field.last {
   margin-right: 0;
 }
@@ -1268,20 +1264,20 @@ table.ruled > tbody > tr + tr > td {
 	SIMPLE TABS
 */
 /* line 5, ../sass/_components.scss */
-ul.tabs {
+ul.tabs, ul.steps {
   list-style: none;
-  margin: 0;
+  margin: 0 0 20px 0;
   padding: 0;
   width: 100%;
   overflow: hidden;
 }
 /* line 11, ../sass/_components.scss */
-ul.tabs li {
+ul.tabs li, ul.steps li {
   margin: 0 10px 0 0;
   float: left;
 }
 /* line 14, ../sass/_components.scss */
-ul.tabs li a {
+ul.tabs li a, ul.steps li a {
   display: block;
   padding: 5px 15px;
   background-color: #d6ebf5;
@@ -1293,7 +1289,7 @@ ul.tabs li a {
   text-decoration: none;
 }
 /* line 25, ../sass/_components.scss */
-ul.tabs li.selected a {
+ul.tabs li.selected a, ul.steps li.selected a {
   font-weight: bold;
   color: #cccccc;
   background-color: #eeeeee;

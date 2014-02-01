@@ -51,34 +51,51 @@
 							'alt' : alt
 						});
 						
-						/* FADE
-						
-						var newImage = new Image();
-						
-						newImage.onload = function() {
-							
-							preview
-								.find("img")
-								.fadeOut('slow', function () { 
-										$(this).remove(); 
-									});
-									
-							$(newImage)
-								.hide()
-								.appendTo(preview)
-								.fadeIn('slow');
-								
-						};
-						newImage.src = previewUrl;
-						newImage.title = title;
-						newImage.alt = alt;
-						
-						*/
-						
 						// Update the big image in the overlay
 						galleryOverlay.find('img').attr('src', largeUrl);
 					});
 				}
+			});
+			
+			/*
+				INITIALIZE STEPPED FORM
+			*/
+			
+			var advanceTabIndex = 0;
+			
+			$('.steps').simpleTabs({
+				
+				init : function (o) {
+					
+					$('.next-btn', o.content).click(function () {
+						o.next();
+						return false;
+					});
+					
+				},
+				
+				beforeChange : function (clicked, o) {
+					var valid = true;
+					
+					// IF TAB IS SET; FIRST TIME THROUGH IT IS UNSET (-1)
+					if (o.index > -1)
+						valid = $('#contact-form').valid();
+					
+					// FILL OUT STEPS IN ORDER
+					if (clicked.index > advanceTabIndex + 1)
+						valid = false;						
+						
+					return valid;
+				},
+				
+				afterChange : function (clicked, o) {
+					
+					// ADVANCE LAST TAB INDEX
+					if (clicked.index > advanceTabIndex)
+						advanceTabIndex = clicked.index;
+						
+				}
+				
 			});
 			
 		});
@@ -177,23 +194,28 @@
 							<a href="#gallery-overlay" class="button overlay-trigger">Open Carousel Overlay</a>
 						</div> <!-- /body -->
 					</div> <!-- /container -->
-					 
-					<div id="multi-carousel-2" class="multi-carousel">
-						<div class="frame">
-						  <ul>
-							<li><img src="http://placehold.it/100x100&text=1" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=2" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=3" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=4" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=5" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=6" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=7" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=8" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=9" width="100" height="100" /></li>
-							<li><img src="http://placehold.it/100x100&text=10" width="100" height="100" /></li>
-						  </ul>
-						</div> <!-- /.frame -->
-					</div> <!-- /multi-carousel -->
+					
+					<div class="container">
+						<h2 class="toggle-small-screen">Carousel</h2>
+						<div class="body">
+							<div id="multi-carousel-2" class="multi-carousel">
+								<div class="frame">
+								  <ul>
+									<li><img src="http://placehold.it/100x100&text=1" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=2" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=3" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=4" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=5" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=6" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=7" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=8" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=9" width="100" height="100" /></li>
+									<li><img src="http://placehold.it/100x100&text=10" width="100" height="100" /></li>
+								  </ul>
+								</div> <!-- /.frame -->
+							</div> <!-- /multi-carousel -->
+						</div> <!-- /body -->
+					</div> <!-- /container -->
 					
 					<script type="text/javascript">
 					
@@ -280,6 +302,136 @@
 			
 		</div> <!-- /body -->
 	</div> <!-- /overlay -->  
-  
+ 
+ 	<div id="my-overlay" class="overlay" style="display: none;">
+	
+		<header>
+		  <h2>[Title]</h2>
+		</header>
+		
+		<div class="body">
+			<p>Lorem ipsum dolor</p>
+			
+			<ul id="step-nav" class="steps">
+				<li><a href="#step-1">Step 1</a></li>
+				<li><a href="#step-2">Step 2</a></li>
+				<li><a href="#step-3">Step 3</a></li>
+			</ul>
+      
+			<form id="contact-form" class="validate">
+				
+				<fieldset id="step-1" class="step default">
+				  <legend>Name Information</legend>
+				  <div class="form-group">
+					<label for="">First Name:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-first" name="contact-first" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">Last Name:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-last" name="contact-last" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <hr />
+				  <div class="submit bar">
+				  	<span class="left"><a href="#" class="overlay-close">Cancel</a></span>
+				  	<span class="right"><a href="#" class="button next-btn">Next</a></span>
+				  </div> <!-- /submit -->
+				</fieldset>
+				
+				<fieldset id="step-2" class="step default">
+				  <legend>Mailing Information</legend>
+				  <div class="form-group">
+					<label for="">Street Address 1:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-addr-1" name="contact-addr-1" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">Street Address 2:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-addr-2" name="contact-addr-1" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">State/Province:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-state" name="contact-state" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">City:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-city" name="contact-city" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">Zip/Postal Code:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-zip" name="contact-zip" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">Country:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-country" name="contact-country" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">Phone:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-phone" name="contact-phone" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">Alternate Phone:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-phone-2" name="contact-phone-2" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-group">
+					<label for="">Email Address:</label>
+					<div class="input-group">
+					  <input type="text" id="contact-email" name="contact-email" class="text required" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <hr />
+				  <div class="submit bar">
+				  	<span class="left"><a href="#" class="overlay-close">Cancel</a></span>
+					<span class="right"><a href="#" class="button next-btn">Next</a></span>
+				  </div> <!-- /submit -->
+				</fieldset>
+				
+				<fieldset id="step-3" class="step default">
+				  <legend>Other Information</legend>
+				  <div class="form-group">
+					<label for="contact-social-media">Which do you use?</label>
+					<div class="input-group">
+						<table>
+							<tr><td><input type="checkbox" class="checkbox" />&nbsp;&nbsp;Facebook</td><td><input type="checkbox" class="checkbox" />&nbsp;&nbsp;Twitter</td></tr>
+							<tr><td><input type="checkbox" class="checkbox" />&nbsp;&nbsp;LinkedIn</td><td><input type="checkbox" class="checkbox" />&nbsp;&nbsp;Other</td></tr>
+						</table>
+					  Twitter:&nbsp;&nbsp;<input type="text" id="contact-social-media" name="contact-social-media" class="text" />
+					</div> <!-- /.input-group -->
+				  </div> <!-- /.form-group -->
+				  <div class="form-block">
+					<label for="">Message:</label>
+					<textarea id="contact-message" class="full" cols="" rows="6"></textarea>
+				  </div> <!-- /.form-block -->
+				  <hr />
+				  <div class="submit bar">
+				  	<span class="left"><a href="#" class="overlay-close">Cancel</a></span>
+				  	<span class="right"><input type="submit" value="Submit" class="overlay-confirm button" /></span>
+				  </div> <!-- /.submit -->
+				</fieldset>
+				
+			</form>
+       
+		</div> <!-- /body -->
+		
+	</div> <!-- /.overlay -->
+ 
 </body>
 </html>

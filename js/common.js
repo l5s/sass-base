@@ -28,21 +28,22 @@ if ( Modernizr.mq('only all') ) {
 					smallScreenToggles.collapsibleMenu({ head: '.toggle-small-screen', collapsible : '.body' });
 					
 				}
+
+				$('#mega-nav').hide();
 	
 				
 			} else if ( smallScreen !== false ) {
 				
 				smallScreen = false;
-				
-				// ENSURE MEGANAV ISN'T HIDDEN
-				$('#mega-nav').show();
-				
+								
 				if ( smallScreenToggles.data("l5-collapsibleMenu") ) {
 					
 					// REMOVE COLLAPSIBLE DRAWERS
 					smallScreenToggles.collapsibleMenu('destroy');
 					
 				}
+
+				$('#mega-nav').show();
 				
 			}
 		}
@@ -249,7 +250,10 @@ $(function () {
 */
 
 $(window).bind("load", function() {
-	// $('#footer').stickyFooter();
+	
+	// ADJUST CAROUSEL SIZING AFTER IMAGES LOAD
+	$('.carousel').resize();
+	
 });
 
 /*
