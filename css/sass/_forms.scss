@@ -15,14 +15,15 @@ textarea, select, input.text { }
 input.text {
 	padding: 5px 3px;
 }
-input.full {
-	width: 95%;
-}
 input.wide {
 	width: 80%;
 }
-textarea.full {
-	width: 98%;
+textarea.w-fill,
+input.w-fill {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	width: 100%;
 }
 
 /*
