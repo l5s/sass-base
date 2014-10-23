@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+
+	<meta charset="utf-8" />
+	
+	<title>Angular Overlay 1.0</title>
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<style>
+		body {
+			font-family: 'Open Sans', sans-serif;
+			height: 100%;
+			width: 100%;
+		}
+		.backdrop {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			opacity: .2; filter: alpha(opacity=20);
+			z-index: 1000;
+		}
+		overlay {
+			display: none;
+			position: absolute;
+			box-sizing: border-box;
+			left: 50%;
+			width: 500px;
+			margin-top: 150px;
+			margin-left: -250px;
+			opacity: 1; filter: alpha(opacity=100);
+			z-index: 1000;
+			border: 1px solid #e3e3e3;
+			-webkit-box-shadow: 0 0 5px #e3e3e3;
+			-moz-box-shadow: 0 0 5px #e3e3e3;
+			box-shadow: 0 0 5px #e3e3e3;
+			background-color: #fff;
+			padding: 20px 30px;
+		}
+	</style>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script>
+		var app = angular.module('app', []);
+		
+		/*
+			To define an overlay, wrap your content in an overlay tag and give it an unique id:
+
+			<overlay id="my-overlay" backdrop="true">
+				<a overlay-close href="">[Close]</a>
+				<h2>[Title]</h2>
+				<p>[Content]</p>
+			</overlay>
+
+			Definining an overlay adds a corresponding display value to the scope. From the scope, you 
+			can toggle it by assigning it a boolean value:
+			
+			$scope.myOverlay = true; // Display overlay with id of my-overlay
+
+			You can also trigger it from your markup by adding an overlay-open attribute to an element:
+			
+			<a overlay-open="my-overlay" href="">Open My Overlay</a>
+		*/
+		
+		app.directive('overlay', function() {
+			return {
+				restrict: 'E',
+				controller: function($scope, $compile, $http) {
+					
+					// PUBLIC API AVAILABLE TO THE CHILD DIRECTIVE
+					
+					this.name = '';	
+					
+					this.close = function () {
+						var that = this;
+						
+						$scope.$apply(function() {
+							$scope[that.name] = false;
+						});
+					};
+					
+				},
+				link: function(scope, element, attrs, ctrl) {
+					
+					var $overlay 	= $(element),
+						$backdrop 	= null;
+					
+					ctrl.name = attrs.$normalize(attrs.id);
+					
+					// CREATE A BACKDROP ELEMENT?
+					if (eval(attrs.backdrop) != false) {
+						$backdrop = $('<div class="backdrop"></div>');
+						$overlay.before($backdrop);
+					}
+
+					var close = function () {
+						var that = this;
+						
+						if ($backdrop) {
+							$backdrop.hide();
+						}
+
+						$overlay.animate({opacity: 0}, 'fast', function () {
+							$overlay.css({ display: 'none' });
+						});
+					};
+					
+					var open = function () {
+						var windowTop = $(window).scrollTop();
+						
+						if ($backdrop) {
+							$backdrop.show();
+						}
+
+						$overlay.css({top : windowTop, opacity: 0, display: 'block'})
+							.animate({opacity: 1}, 'fast');
+					};
+					
+					// IF THE USER HAS NOT ALREADY DEFINED A DISPLAY VALUE OF THE OVERLAY
+					// SET IT TO HIDDEN
+					if (scope[ctrl.name] === undefined) {
+						scope[ctrl.name] = false;
+					}
+					
+					// WATCH FOR CHANGES IN DISPLAY VALUE
+					scope.$watch(ctrl.name, function (val) {
+						if (val === true) {
+							open();
+						} else { 
+							close();
+						}
+					});
+
+				}
+			};
+		});
+
+		app.directive('overlayClose', function() {
+			return {
+				restrict: 'A',
+				require: '^overlay',
+				link: function(scope, element, attrs, ctrl) {
+					
+					element.on('click', function (ev) {
+						ev.stopPropagation();
+						ctrl.close();
+					});
+					
+				}
+			};
+		});
+
+		app.directive('overlayOpen', function() {
+			return {
+				restrict: 'A',
+				link: function(scope, element, attrs) {
+					var name = attrs.$normalize(attrs.overlayOpen);
+					
+					$(element).on('click', function (ev) {
+						ev.stopPropagation();
+						scope.$apply(function() {
+							scope[name] = true;
+						});
+					});
+					
+				}
+			};
+		});
+
+		app.controller('MainCtrl', function ($scope) {
+
+			$scope.title = "Angular Overlay 1.0";
+			
+			$scope.open = function ($event) {
+				$event.stopPropagation();
+				$scope.myOverlay = true;
+			};
+			
+			$scope.myOverlay = true;
+			
+		});
+	</script>
+	
+</head>
+
+<body ng-controller="MainCtrl">
+	
+	<h1>{{title}}</h1>
+	Open: {{myOverlay}}<br /><br />
+	
+	<a ng-click="open($event)" href="">Open Method 1</a><br />
+	<a overlay-open="my-overlay" href="">Open Method 2</a><br />
+	
+	<overlay id="my-overlay" backdrop="true">
+		<a overlay-close href="">[Close]</a>
+		<h2>[Title]</h2>
+		<p>[Content]</p>
+	</overlay>
+	
+</body>
+	
+</html>
