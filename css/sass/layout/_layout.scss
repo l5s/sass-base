@@ -1,3 +1,15 @@
+/*
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
+
+@mixin outer {
+	max-width: 1230px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 body {
 	min-width: 320px;
 	color: $body-color;
@@ -76,9 +88,6 @@ nav.inline {
 
 @media (max-width: 767px) {
 	
-	.small-screen { display: block; }
-	.large-screen { display: none; }
-
 	.toggle-small-screen {
 		background: url(../images/icn-collapse-inactive.png) 5px 10px $wf-blue-lt no-repeat;;
 		padding: 0 30px !important;

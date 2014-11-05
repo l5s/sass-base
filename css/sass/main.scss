@@ -1,14 +1,30 @@
+/*
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
+
 @import "../lib/normalize.css";
-@import "base";
-@import "helper";
-@import "layout";
-@import "header";
-@import "footer";
-@import "forms";
-@import "assets";
-@import "components";
-@import "carousel";
-@import "overlay";
-@import "medium";
-@import "small";
-@import "print";
+
+// BASE
+@import "base/globals";
+@import "base/base";
+
+// LAYOUT
+@import "layout/layout";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/forms";
+
+// COMPONENTS
+@import "components/buttons";
+@import "components/bar";
+@import "components/tables";
+@import "components/lists";
+@import "components/tabs";
+@import "components/carousel";
+@import "components/overlay";
+@import "components/media-block";
+
+// HELPER OVERRIDES
+@import "base/helper";

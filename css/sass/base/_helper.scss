@@ -1,0 +1,64 @@
+/*
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
+
+.small-screen { display: none; }
+
+@media (max-width: 767px) {
+	
+	.small-screen { display: block; }
+	.large-screen { display: none; }
+	
+}
+
+.h-fill {
+	width: 100%;
+}
+
+.hide { display: none; }
+
+.em { font-style: italic; }
+.strong { font-weight: bold; }
+
+.txt-xsm { font-size: 11px; line-height: 14px; }
+.txt-lg { font-size: 26px; line-height: 34px; }
+.txt-xlg { font-size: 20px; line-height: 16px; }
+.txt-dem { color: #b2aca5; }
+.txt-center { text-align: center; }
+
+.margin-tight { margin-bottom: 5px; }
+.margin-none { margin-bottom: 0 !important; }
+
+.extend { margin-left: -20px; margin-right: -20px; }
+.inset { padding-left: 20px; padding-right: 20px; }
+
+.ir { text-indent: -999px; overflow: hidden; display: inline-block; text-align: left; }
+
+/* FLOAT UTILITIES */
+
+.clear { clear: both; }
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+

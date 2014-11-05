@@ -1,0 +1,21 @@
+/*
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
+
+@import "compass/css3";
+@import "compass/utilities";
+@import "sprites/*.png";
+
+@include all-sprites-sprites(true);
+
+$body-color: 		#000;
+
+$wf-blue-lt: 		rgb(214, 235, 245);
+$wf-blue: 			#3399CC;
+$wf-gray-lt: 		#eee;
+$wf-gray: 			#ccc;
+
+$font-primary: 		'nimbus-sans-condensed', sans-serif;
+$font-secondary: 	'Helvetica', 'Arial', sans-serif;

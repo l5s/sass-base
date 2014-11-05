@@ -1,0 +1,9 @@
+/*
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
+
+.bar { position: relative; @include pie-clearfix; }
+.bar .left { float: left; }
+.bar .right { float: right }

@@ -1,0 +1,9 @@
+/*
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
+
+ul.inline { width: 100%; list-style: none; padding: 0; margin: 0; }
+ul.inline li { float: left; }
+ul.inline li+li { margin-left: 20px; }

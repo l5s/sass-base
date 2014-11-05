@@ -1,23 +1,25 @@
 /*
-	BUTTON
-*/
-
-.button {
-	border: none;
-	padding: 0 10px;
-	background: $wf-blue-lt;
-	color: $wf-blue;
-	font: normal 12px/32px arial, sans-serif;
-	text-decoration: none;
-	display: inline-block;
-}
-
-/*
-	TABLES
-*/
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
 
 table {
 	&.full-width { width: 100%; }
+
+	/* TABLES */
+	th + th,
+	td + td { padding-left: 20px; }
+
+	th.wide,
+	td.wide { width: 99%; }
+	th.narrow,
+	td.narrow { width: 1%; }
+
+	td.label { font-weight: bold; }
+
+	tr.odd td { background-color: #f0efee; }
+	tr.odd th { background-color: #f0efee; padding-top: 10px; }
 }
 
 table.data {

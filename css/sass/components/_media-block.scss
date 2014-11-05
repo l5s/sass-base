@@ -1,0 +1,12 @@
+/*
+ * Created by: Level Five Solutions
+ * Website: http://www.levelfivesolutions.com/
+ *
+ */
+
+/* MEDIA BLOCK - a content block containing a fixed-size media element (e.g. image or video) along with other variable-size content (e.g. text) */
+
+.media-block figure { width: 132px; min-height: 132px; float: left; text-align: center; margin-right: 20px; margin-bottom: 20px; }
+.media-block figure figcaption { margin-top: 8px; }
+.media-block .meta { float: left; }
+.media-block.small figure { width: 80px; min-height: 80px; }
