@@ -21,7 +21,8 @@ if ( Modernizr.mq('only all') ) {
 			if ( Modernizr.mq('only screen and (max-width: 767px)') && ! smallScreen ) {		
 		
 				smallScreen = true;
-		
+				
+				// IF TOGGLES ARE NOT INITIALIZED
 				if ( ! smallScreenToggles.data("l5-collapsibleMenu") ) {
 					
 					// INITIALIZE COLLAPSIBLE DRAWERS
@@ -46,6 +47,7 @@ if ( Modernizr.mq('only all') ) {
 				$('#mega-nav').show();
 				
 			}
+
 		}
 		
 		// INITIALIZE

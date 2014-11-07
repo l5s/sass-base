@@ -21,7 +21,7 @@ h1 { font-size: 26px; }
 h2 { font-size: 24px; }
 h3 { font-size: 18px; }
 h4 { font-size: 16px; }
-h5 { font-size: 13px; line-height: 18px; text-transform: uppercase; }
+h5 { font-size: 14px; line-height: 20px; text-transform: uppercase; }
 h6 { font-size: 10px; text-transform: uppercase; }
 	
 /* ANCHORS */
@@ -45,49 +45,3 @@ hr {
 /* PARAGRAPHS */
 p { margin: 0 0 20px 0; }
 
-strong, b { font-weight: bold; }
-em, i { font-style: italic; }
-
-/* LISTS */
-ul {
-	list-style: outside disc;
-	margin: 1em 0 1.5em 1.5em;
-}
-ol {
-	list-style: outside decimal;
-	margin: 1em 0 1.5em 1.5em;
-}
-dl { margin: 0 0 1.5em 0; }
-dt { font-weight: bold; }
-dd { margin-left: 1.5em; }
-
-ul.ruled {
-	list-style: none;
-	padding-left: 0;
-	margin-left: 0;
-	li  {
-		padding: 7px 0;
-	}
-	li + li {
-		border-top: 1px dotted #000;
-	}
-}
-
-/* QUOTES */
-blockquote { font-style: italic; }
-cite {}
-q {}
-
-/* TABLES */
-th + th,
-td + td { padding-left: 20px; }
-
-th.wide,
-td.wide { width: 99%; }
-th.narrow,
-td.narrow { width: 1%; }
-
-td.label { font-weight: bold; }
-
-tr.odd td { background-color: #f0efee; }
-tr.odd th { background-color: #f0efee; padding-top: 10px; }
